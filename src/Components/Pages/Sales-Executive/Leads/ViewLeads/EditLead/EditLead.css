@@ -1,0 +1,84 @@
+.editlead-form-container {
+  width: 100%;
+  margin: 20px auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2%;
+}
+
+.editlead-form-header {
+  background: #f7941e;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editlead-form-header h2 {
+  font-size: 18px;
+}
+
+.editlead-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns by default */
+  gap: 15px;
+}
+
+.editlead-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.editlead-input-group label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.editlead-input-group input,
+.editlead-input-group textarea,
+.editlead-input-group select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.editlead-form-footer {
+  padding: 15px 20px;
+  text-align: right;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.editlead-form-footer .btn {
+  padding: 8px 30px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.editlead-form-footer .btn-primary {
+  background: #f7941e;
+  color: white;
+}
+
+.editlead-form-footer .btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.editlead-form-footer .btn-primary:hover {
+  background: #d6791b;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .editlead-form-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
+}

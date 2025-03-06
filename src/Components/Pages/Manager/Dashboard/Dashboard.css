@@ -1,0 +1,320 @@
+.dashboardContainer1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard1 {
+  flex: 1;
+  padding: 20px;
+  margin-top: 5%;
+  margin-left: 220px;
+  width: calc(90% - 50px);
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.dashboard1.collapsed {
+  margin-left: 60px;
+  width: calc(100% - 70px);
+}
+
+/* General Container Styles */
+.Manager-dashboard-container {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 44px;
+  margin-left: -46%;
+  width: 144%;
+}
+
+
+.Manager-gradient-card {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: white;
+  border-radius: 10px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.Manager-gradient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.Manager-follow-up-schedule {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.Manager-schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.Manager-schedule-header h5 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.Manager-dropdown-toggle {
+  color: #ff9966;
+  border: 1px solid #ff9966;
+  background: none;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.Manager-dropdown-toggle:hover {
+  background: #ff9966;
+  color: #fff;
+}
+
+
+.Manager-day-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.Manager-day {
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 50px;
+  background: #e0e0e0;
+  color: #333;
+  font-weight: 600;
+}
+
+.Manager-day-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.Manager-day-number {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #333;
+}
+
+.Manager-day.active {
+  background: #ff9966;
+  color: #fff;
+}
+
+.Manager-day.active .Manager-day-label,
+.Manager-day.active .Manager-day-number {
+  color: #fff;
+}
+
+.Manager-day:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.Manager-schedule-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.Manager-add-schedule-link {
+  color: #ff9966;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.Manager-add-schedule-link:hover {
+  text-decoration: underline;
+}
+
+
+.Manager-schedule-legends {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.Manager-legend {
+  display: flex;
+  align-items: center;
+}
+
+.Manager-legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.Manager-badge-orange {
+  background-color: #ff9966;
+}
+
+.Manager-badge-green {
+  background-color: #28a745;
+}
+
+.Manager-badge-blue {
+  background-color: #007bff;
+}
+
+
+.Manager-schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Manager-schedule-item {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.Manager-schedule-item:hover {
+  background-color: #fafafa;
+  border-color: #ccc;
+  transform: scale(1.01);
+}
+
+.Manager-badge-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9ecef;
+  border-radius: 50%;
+}
+
+.Manager-badge {
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+}
+
+.Manager-view-details-btn {
+  background: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.Manager-view-details-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+
+
+@media (max-width: 992px) {
+  .Manager-gradient-card {
+    height: 130px;
+  }
+
+  .Manager-follow-up-schedule {
+    padding: 15px;
+  }
+
+  .Manager-schedule-container {
+    padding: 15px;
+  }
+
+  .Manager-day-selector {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .Manager-day {
+    flex: 1 1 20%;
+    max-width: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .Manager-gradient-card {
+    height: 120px;
+    font-size: 14px;
+  }
+
+  .Manager-schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .Manager-view-details-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .Manager-gradient-card {
+    height: 100px;
+    font-size: 12px;
+  }
+
+  .Manager-schedule-item {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .Manager-badge {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+
+  .Manager-view-details-btn {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  .Manager-day-selector {
+    gap: 5px;
+  }
+  .dashboardContainer1 {
+    padding: 10px;
+  }
+
+  .dashboard1 {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+}

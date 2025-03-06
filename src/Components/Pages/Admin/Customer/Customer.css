@@ -1,0 +1,56 @@
+.AdminCustomer-table-container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: rgba(163, 110, 41, 0.08);
+  }
+
+
+  
+.AdminCustomercontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.AdminCustomer {
+  margin-top: 60px; 
+  margin-left: 220px; 
+  padding: 20px;
+  width: calc(100% - 220px);
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.AdminCustomer.collapsed {
+  margin-left: 50px; 
+  width: calc(100% - 50px); 
+}
+
+.icon-black {
+  color: black;
+}
+
+.file-link{
+  text-decoration: none;
+}
+
+
+@media (max-width: 767px) {
+  .AdminCustomercontainer {
+    flex-direction: column;
+  }
+
+  .AdminCustomer {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .AdminCustomer.collapsed {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+
+

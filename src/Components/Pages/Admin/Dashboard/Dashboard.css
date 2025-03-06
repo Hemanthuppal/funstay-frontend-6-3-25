@@ -1,0 +1,408 @@
+.dashboardContainer1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard1 {
+  flex: 1;
+  padding: 20px;
+  margin-top: 5%;
+  margin-left: 220px;
+  width: calc(90% - 50px);
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.dashboard1.collapsed {
+  margin-left: 60px;
+  width: calc(100% - 70px);
+}
+
+/* General Container Styles */
+.admin-dashboard-container {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 44px;
+  margin-left: -46%;
+  width: 144%;
+}
+
+/* Gradient Card Styles */
+.admin-gradient-card {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: white;
+  border-radius: 10px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.admin-gradient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Follow-up Schedule Styles */
+.admin-follow-up-schedule {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.admin-schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.admin-schedule-header h5 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-dropdown-toggle {
+  color: #ff9966;
+  border: 1px solid #ff9966;
+  background: none;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.admin-dropdown-toggle:hover {
+  background: #ff9966;
+  color: #fff;
+}
+
+/* Day Selector Styles */
+.admin-day-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.admin-day {
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 50px;
+  background: #e0e0e0;
+  color: #333;
+  font-weight: 600;
+}
+
+.admin-day-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.admin-day-number {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #333;
+}
+
+.admin-day.active {
+  background: #ff9966;
+  color: #fff;
+}
+
+.admin-day.active .admin-day-label,
+.admin-day.active .admin-day-number {
+  color: #fff;
+}
+
+.admin-day:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Today's Schedule Container */
+.admin-schedule-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.admin-add-schedule-link {
+  color: #ff9966;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-add-schedule-link:hover {
+  text-decoration: underline;
+}
+
+/* Schedule Legends */
+.admin-schedule-legends {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-legend {
+  display: flex;
+  align-items: center;
+}
+
+.admin-legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.admin-badge-orange {
+  background-color: #ff9966;
+}
+
+.admin-badge-green {
+  background-color: #28a745;
+}
+
+.admin-badge-blue {
+  background-color: #007bff;
+}
+
+/* Schedule Items */
+.admin-schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-schedule-item {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.admin-schedule-item:hover {
+  background-color: #fafafa;
+  border-color: #ccc;
+  transform: scale(1.01);
+}
+
+.admin-badge-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9ecef;
+  border-radius: 50%;
+}
+
+.admin-badge {
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+}
+
+/* View Details Button */
+.admin-view-details-btn {
+  background: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.admin-view-details-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+@media (min-width: 1024px)  and (max-width: 1366px){
+  .admin-dashboard-cards-container{
+    width: 110%;
+  }}
+
+
+
+@media (max-width: 1024px) {
+  .container{
+    max-width: 100%;
+  }
+  .Sales-day {
+    width: 14%; 
+    /* margin-left: -8px; */
+   }
+
+   .dashboard1.collapsed {
+    margin-left: 60px;
+    width:90%;
+  }
+
+  .dashboard1 {
+    flex: 1 1;
+    padding: 20px;
+    margin-top: 5%;
+    width: 70%;
+    margin-left: 220px;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+
+.admin-dashboard-cards-container{
+  width: 110%;
+}
+
+.col-lg-7 {
+  width: 100%;
+}
+.col-lg-5 {
+  width: 100%;
+}
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .admin-gradient-card {
+    height: 130px;
+  }
+
+  .admin-follow-up-schedule {
+    padding: 15px;
+  }
+
+  .admin-schedule-container {
+    padding: 15px;
+  }
+
+  .admin-day-selector {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .admin-day {
+    flex: 1 1 20%;
+    /* max-width: 20%; */
+  }
+}
+
+
+/* iPad Air & iPad Pro 11" */
+/* @media only screen and (max-width: 834px) {
+
+ 
+} */
+
+/* iPad Pro 12.9" */
+/* @media only screen and (max-width: 1024px) {
+  
+} */
+
+@media (max-width: 768px) {
+  .admin-gradient-card {
+    height: 120px;
+    font-size: 14px;
+  }
+
+  .admin-schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .admin-view-details-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-gradient-card {
+    height: 100px;
+    font-size: 12px;
+  }
+
+  .admin-schedule-item {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .admin-badge {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+
+  .admin-view-details-btn {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  .admin-day-selector {
+    gap: 5px;
+  }
+  .dashboardContainer1 {
+    padding: 10px;
+  }
+
+  .dashboard1 {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+
+
+  .dashboard1.collapsed {
+    margin-left: 34px;
+    width:93%;
+  }
+  .Sales-day {
+   max-width: 14%; 
+   margin-left: -8px;
+  }
+
+  .Sales-day-label{
+    margin-left: -8px;
+
+  }
+
+
+  .Sales-day-number{
+    margin-left: -8px;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .Sales-day-selector {
+    justify-content: space-evenly; 
+    gap: 0.5rem; 
+  }
+
+  .Sales-day {
+    flex: 1 1 10%; 
+  }
+}

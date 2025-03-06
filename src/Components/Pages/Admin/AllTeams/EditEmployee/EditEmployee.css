@@ -1,0 +1,107 @@
+.editemployee-form-container {
+    width: 100%;
+    margin: 20px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+}
+
+.editemployee-form-header {
+    background: #f7941e;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editemployee-form-header h2 {
+    font-size: 18px;
+}
+
+.editemployee-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.editemployee-input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.editemployee-input-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.editemployee-input-group input,
+.editemployee-input-group textarea,
+.editemployee-input-group select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.editemployee-form-footer {
+    padding: 15px 20px;
+    text-align: right;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.editemployee-form-footer .btn {
+    padding: 8px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.editemployee-form-footer .btn-primary {
+    background: #f7941e;
+    color: white;
+}
+
+.editemployee-form-footer .btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.editemployee-form-footer .btn-primary:hover {
+    background: #d6791b;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .editemployee-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.editemployee-input-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-container input {
+    width: 100%;
+    padding-right: 35px;
+}
+
+.password-eye-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #f7941e; 
+}

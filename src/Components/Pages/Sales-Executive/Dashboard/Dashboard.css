@@ -1,0 +1,319 @@
+.salesDashboardContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.salesDashboard {
+  flex: 1;
+  padding: 20px;
+  margin-top: 5%;
+  margin-left: 220px;
+  width: calc(90% - 50px);
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.salesDashboard.collapsed {
+  margin-left: 60px;
+  width: calc(100% - 70px);
+}
+
+/* General Container Styles */
+.Sales-dashboard-container {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 44px;
+}
+
+/* Gradient Card Styles */
+.Sales-gradient-card {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: white;
+  border-radius: 10px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.Sales-gradient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Follow-up Schedule Styles */
+.Sales-follow-up-schedule {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.Sales-schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.Sales-schedule-header h5 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.Sales-dropdown-toggle {
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+  background: none;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.Sales-dropdown-toggle:hover {
+  background: #6c63ff;
+  color: #fff;
+}
+
+/* Day Selector Styles */
+.Sales-day-selector {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.Sales-day {
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 50px;
+  background: #e0e0e0;
+  color: #333;
+  font-weight: 600;
+}
+
+.Sales-day-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.Sales-day-number {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #333;
+}
+
+.Sales-day.active {
+  background: #6c63ff;
+  color: #fff;
+}
+
+.Sales-day.active .Sales-day-label,
+.Sales-day.active .Sales-day-number {
+  color: #fff;
+}
+
+.Sales-day:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Today's Schedule Container */
+.Sales-schedule-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.Sales-add-schedule-link {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.Sales-add-schedule-link:hover {
+  text-decoration: underline;
+}
+
+/* Schedule Legends */
+.Sales-schedule-legends {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.Sales-legend {
+  display: flex;
+  align-items: center;
+}
+
+.Sales-legend-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.Sales-badge-orange {
+  background-color: #ff9966;
+}
+
+.Sales-badge-green {
+  background-color: #28a745;
+}
+
+.Sales-badge-blue {
+  background-color: #007bff;
+}
+
+/* Schedule Items */
+.Sales-schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Sales-schedule-item {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.Sales-schedule-item:hover {
+  background-color: #fafafa;
+  border-color: #ccc;
+  transform: scale(1.01);
+}
+
+.Sales-badge-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9ecef;
+  border-radius: 50%;
+}
+
+.Sales-badge {
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+}
+
+/* View Details Button */
+.Sales-view-details-btn {
+  background: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.Sales-view-details-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .Sales-gradient-card {
+    height: 130px;
+  }
+
+  .Sales-follow-up-schedule {
+    padding: 15px;
+  }
+
+  .Sales-schedule-container {
+    padding: 15px;
+  }
+
+  .Sales-day-selector {
+    /* flex-wrap: wrap; */
+    gap: 10px;
+  }
+
+  .Sales-day {
+    flex: 1 1 20%;
+    max-width: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .Sales-gradient-card {
+    height: 120px;
+    font-size: 14px;
+  }
+
+  .Sales-schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .Sales-view-details-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .Sales-gradient-card {
+    height: 100px;
+    font-size: 12px;
+  }
+
+  .Sales-schedule-item {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .Sales-badge {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+
+  .Sales-view-details-btn {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  .Sales-day-selector {
+    gap: 5px;
+  }
+
+  .salesDashboardContainer {
+    padding: 10px;
+  }
+
+  .salesDashboard {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px;
+  }
+}

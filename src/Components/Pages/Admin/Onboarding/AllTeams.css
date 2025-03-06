@@ -1,0 +1,110 @@
+.modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      
+      .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        /* max-width: 90%; */
+        width: 100%;
+        position: relative;
+      }
+      
+      .modal-close-btn {
+        background: linear-gradient(90deg, #f06257, #f9a125); /* Gradient background */
+        color: white; /* White text */
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 14px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      
+      .modal-close-btn:hover {
+        background: linear-gradient(90deg, #e55d4d, #e8931b); /* Darker gradient on hover */
+      }
+      
+      .add-employee-btn {
+        margin: 10px 0;
+        padding: 10px 20px;
+        background: linear-gradient(90deg, #f06257, #f9a125); /* Gradient background */
+        color: white;
+        border: none;
+        cursor: pointer;
+        text-align: right;
+      }
+      
+      .add-employee-btn:hover {
+        background: linear-gradient(90deg, #e55d4d, #e8931b); /* Darker gradient on hover */
+      }
+      
+
+
+      
+
+.Admin-myteamcontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.Admin-myteam {
+  margin-top: 60px; /* Adjust based on header height */
+  margin-left: 220px; /* Adjust based on sidebar width */
+  padding: 20px;
+  width: calc(100% - 220px); /* Adjust width based on sidebar width */
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.Admin-myteam .collapsed {
+  margin-left: 50px; /* Adjust based on collapsed sidebar width */
+  width: calc(100% - 50px); /* Adjust width based on collapsed sidebar width */
+}
+
+.icon-black {
+  color: black;
+}
+
+.file-link{
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  .Admin-myteamcontainer {
+    flex-direction: column;
+  }
+
+  .Admin-myteam {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .Admin-myteam.collapsed {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+
+.ViewCustomer-container {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: rgba(163, 110, 41, 0.08);
+}

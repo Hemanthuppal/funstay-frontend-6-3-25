@@ -1,0 +1,38 @@
+/* .pagination-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #f06257, #f9a125);
+    z-index: 9999; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .dataTable_pageInfo {
+    color: white;
+  }
+  
+  .pagebuttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .pagebuttons button {
+    margin: 0;
+  }
+   */
+
+
+   

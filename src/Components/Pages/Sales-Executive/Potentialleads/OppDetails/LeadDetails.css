@@ -1,0 +1,78 @@
+.btn-gradient-right {
+        background: linear-gradient(to right, #ff9966, #ff5e62) !important;
+        color: white !important;
+        border: none !important;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+    }
+    
+    .btn-gradient-left {
+        background: linear-gradient(to left, #ff9966, #ff5e62) !important;
+        color: white !important;
+        border: none !important;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+    }
+    
+    .btn-gradient-right:hover, .btn-gradient-left:hover {
+        color: black  !important;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+
+    }
+
+
+    
+    .btn-custom-red {
+        background-color: #ff5757 !important;
+        color: white !important;
+        border: none !important;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+    }
+    
+    .btn-custom-red:hover {
+        background-color: #e04e4e !important; /* Slightly darker shade for hover effect */
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    
+
+    .btn-email-blue {
+        background-color: #4A90E2 !important;
+        color: white !important;
+        border: none !important;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+    }
+    
+    .btn-email-blue:hover {
+        background-color: #3b7ac4 !important; /* Slightly darker shade */
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+
+
+    
+    .btn-receipt-email {
+        background-color: #5A9BFC !important; /* Soft Blue */
+        color: white !important;
+        border: none !important;
+        padding: 8px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background 0.3s ease;
+    }
+    
+    .btn-receipt-email:hover {
+        background-color: #4C86D1 !important; /* Darker Blue for hover effect */
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    

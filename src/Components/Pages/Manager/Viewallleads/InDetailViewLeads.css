@@ -1,0 +1,74 @@
+
+
+.indeatilleadcontainer {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .indeatilleadcontent {
+    margin-top: 60px; 
+    margin-left: 220px; 
+    padding: 20px;
+    width: calc(100% - 220px); 
+    transition: margin-left 0.3s ease, width 0.3s ease;
+  }
+  
+  .indeatilleadcontent.collapsed {
+    margin-left: 100px; 
+    width: calc(100% - 50px); 
+  }
+  
+
+
+  @media (max-width: 767px) {
+    .indeatilleadcontainer {
+      flex-direction: column;
+    }
+  
+    .indeatilleadcontent {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    .indeatilleadcontent.collapsed {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+  
+
+  .Sales-myteam-container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: rgba(163, 110, 41, 0.08);
+  }
+  
+  .lead-details-header {
+    background: #f7941e;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .indetail-container{
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: rgba(163, 110, 41, 0.08);
+  
+  }
+
+
+
+.back-button .btn-secondary {
+    padding: 8px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+  }

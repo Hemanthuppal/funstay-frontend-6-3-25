@@ -1,0 +1,85 @@
+
+.lead-opportunity-view {
+    width: 100%;
+    margin: 20px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+  }
+  
+  .s-LeadOppView-modal-header {
+    background: #f7941e;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+  .lead-opportunity-view .card {
+    border-radius: 10px;
+  }
+  
+
+  .s-LeadOppView-btn-primary {
+    background-color: #f1960e; 
+    border-color: #f1960e;
+    color: #333;
+  }
+  
+  .s-LeadOppView-btn-primary:hover {
+    background-color: #f1960e; 
+  }
+  
+  .s-LeadOppView-btn-secondary {
+    background-color: #ff4d4d; 
+    border-color: #ff4d4d;
+    transition: background-color 0.3s ease;
+    color: white;
+  }
+  
+  .s-LeadOppView-btn-secondary:hover {
+    background-color: #e60000; 
+  }
+  
+  
+  .s-Opp-Notesection {
+    width: 90%;
+    height: 325px;
+    background-color: #f1f7ff;
+    overflow-y: auto; 
+    padding: 10px; 
+    border-radius: 5px; 
+  }
+  
+  .s-Opp-Commentsection {
+    width: 90%;
+    height: 180px;
+    background-color: #f1f7ff;
+    overflow-y: auto; 
+    padding: 10px; /* Add some padding */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .s-LeadOppView-footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between the buttons */
+    padding: 10px 10px;
+  }
+  
+  
+  
+  .s-LeadOppView-footer .btn {
+    padding: 8px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .s-LeadOppView-footer .btn-secondary {
+    background: #6c757d;
+    color: white;
+  }

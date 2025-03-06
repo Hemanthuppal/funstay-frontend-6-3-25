@@ -1,0 +1,271 @@
+/* Header Styles */
+.sales-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.sales-header-left {
+    display: flex;
+    align-items: center;
+}
+
+.sales-sidebar-toggle {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* .sales-company-logo {
+    height: 55px;
+    margin-left: 10px;
+    width: 140px;
+} */
+
+.sales-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.sales-header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.sales-nav-icon-container {
+    position: relative;
+    margin-left: 20px;
+}
+
+.sales-nav-icon {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.sales-nav-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.sales-nav-profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sales-nav-profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.sales-nav-caret-icon {
+    font-size: 16px;
+    color: #333;
+}
+
+.sales-nav-profile-dropdown {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 200px;
+    z-index: 1001;
+}
+
+.sales-nav-profile-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sales-nav-profile-item {
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.sales-nav-profile-item:hover {
+    background-color: #f1f1f1;
+}
+
+/* Sidebar Styles */
+.sales-sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    color: #464343;
+    transition: width 0.3s ease;
+    overflow-y: auto;
+    padding-top: 20px;
+    width: 220px;
+    z-index: 999;
+}
+
+.sales-sidebar.collapsed {
+    width: 78px;
+}
+
+.sales-position-sticky {
+    position: sticky;
+    top: 0;
+}
+
+.sales-nav-item {
+    list-style: none;
+}
+
+.sales-nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.sales-nav-item .nav-link:hover {
+    background-color: linear-gradient(90deg, #ff8757, #ff5757);
+}
+
+.sales-nav-icon {
+    margin-right: 10px;
+}
+
+.link_text {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #000;
+}
+
+.sales-nav-item.active .link_text {
+    color: rgb(24, 37, 102);
+}
+
+.sales-nav-item.active .nav-link {
+    background-color: white;
+    color: rgb(24, 37, 102);
+}
+
+.sales-nav-item.active.link_text {
+    background-color: white;
+    color: rgb(24, 37, 102);
+}
+
+/* Sidebar toggle icon inside the header */
+.sales-sidebar-toggle {
+    cursor: pointer;
+    font-size: 24px;
+    color: #0a98d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1c1a1a;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.toggle-icon {
+    font-size: 24px;
+}
+
+/* Add Leads Button Styles */
+.lead-button {
+    position: relative;
+    background-color: #ff5757;
+    color: white;
+    border: none;
+    width: 270px;
+    height: 50px;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.lead-button:hover {
+    background-color: #ff3b3b;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .sales-sidebar {
+        display: none;
+    }
+
+    .sales-sidebar.collapsed {
+        display: block;
+        width: 50px;
+    }
+
+    .sales-sidebar.collapsed .sales-nav-link .link_text {
+        display: none;
+    }
+
+
+    .sales-company-logo {
+        width: 105px;
+        /* margin-left: 5px; */
+      }
+    
+      .user-sales {
+        margin-left: 8px;
+        font-size: 11px;
+        margin-top: 10px;
+    }
+}
+
+
+
+.notification-dropdown {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: white;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .notification-dropdown-header {
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .notification-dropdown-body {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .notification-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .notification-item:hover {
+    background: #f5f5f5;
+  }

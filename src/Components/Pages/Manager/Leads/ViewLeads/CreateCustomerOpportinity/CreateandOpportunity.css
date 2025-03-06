@@ -1,0 +1,135 @@
+.createcustomer-form-container {
+  width: 100%;
+  margin: 20px auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2%;
+}
+
+.createcustomer-form-header {
+  background: #f7941e;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.createcustomer-form-header h2 {
+  font-size: 18px;
+}
+
+.createcustomer-form-body {
+  padding: 20px;
+}
+
+.createcustomer-tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.createcustomer-tab-button {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.createcustomer-tab-button.active {
+  color: #f7941e;
+  border-bottom: 2px solid #f7941e;
+}
+
+.createcustomer-tab-content {
+  display: none;
+}
+
+.createcustomer-tab-content.active {
+  display: block;
+}
+
+.createcustomer-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.createcustomer-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.createcustomer-input-group label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.createcustomer-input-group input,
+.createcustomer-input-group textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.createcustomer-input-group textarea {
+  resize: vertical;
+}
+
+.createcustomer-input-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.createcustomer-form-footer {
+  padding: 15px 20px;
+  text-align: right;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.createcustomer-btn {
+  padding: 8px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.createcustomer-close-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.createcustomer-submit-btn {
+  background: #f7941e;
+  color: white;
+}
+
+.createcustomer-submit-btn:hover {
+  background: #d6791b;
+}
+
+.createcustomer-input-group select {
+  padding: 8px; 
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
+  font-size: 14px; 
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+
+@media (max-width: 600px) {
+  .createcustomer-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,122 @@
+.potentialleads-table-container {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: rgba(163, 110, 41, 0.08);
+}
+
+
+
+
+.salesOpportunitycontainer {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .salesOpportunity {
+    margin-top: 60px; /* Adjust based on header height */
+    margin-left: 220px; /* Adjust based on sidebar width */
+    padding: 20px;
+    width: calc(100% - 220px); /* Adjust width based on sidebar width */
+    transition: margin-left 0.3s ease, width 0.3s ease;
+  }
+  
+  .salesOpportunity.collapsed {
+    margin-left: 50px; /* Adjust based on collapsed sidebar width */
+    width: calc(100% - 50px); /* Adjust width based on collapsed sidebar width */
+  }
+  
+  .icon-black {
+    color: black;
+  }
+  
+  .file-link{
+    text-decoration: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .salesOpportunitycontainer {
+      flex-direction: column;
+    }
+  
+    .salesOpportunity {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    .salesOpportunity.collapsed {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+
+  .salesOpportunity-container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: rgba(163, 110, 41, 0.08);
+  }
+ 
+  .view-modal-header{
+    background-color: #f7941e;
+}
+  .view-btn-secondary {
+    background-color: #ff4d4d; /* Red */
+    border-color: #ff4d4d;
+  }
+  
+  .view-btn-secondary:hover {
+    background-color: #e60000; /* Darker red */
+  }
+
+/* General styles for comment modal */
+
+  .comment-modal-header {
+    background-color: #f7941e; 
+    
+  }
+  .opp-modal-footer .opp-comment-btn-primary {
+    background-color: #f1960e; /* Yellow */
+    border-color: #f1960e;
+  }
+  
+  .opp-modal-footer .opp-comment-btn-primary:hover {
+    background-color: #f5970a; /* Slightly darker yellow */
+  }
+  
+  .opp-modal-footer .opp-comment-btn-secondary {
+    background-color: #ff4d4d; /* Red */
+    border-color: #ff4d4d;
+  }
+  
+  .opp-modal-footer .opp-comment-btn-secondary:hover {
+    background-color: #e60000; /* Darker red */
+  }
+  
+
+  .potentialleads-table-container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: rgba(163, 110, 41, 0.08);
+  }
+
+
+  /* Fix table layout so columns do not resize */
+/* .potentialleads-table-container table {
+  table-layout: fixed;
+  width: 100%;
+} */
+.fixed-select {
+  width: 150px;     
+  max-width: 150px;
+  min-width: 150px;
+}

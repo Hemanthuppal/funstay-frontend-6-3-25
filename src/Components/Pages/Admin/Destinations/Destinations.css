@@ -1,0 +1,84 @@
+/* .destination-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+   */
+  .destination-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .destination-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .destination-input button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .destination-input button:hover {
+    background-color: #0056b3;
+  }
+  
+  .destination-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .destination-table th,
+  .destination-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .destination-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+  
+  .destination-table td {
+    background-color: #ffffff;
+  }
+  
+  .destination-actions button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .destination-actions .edit-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .destination-actions .edit-btn:hover {
+    background-color: #218838;
+  }
+  
+  .destination-actions .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .destination-actions .delete-btn:hover {
+    background-color: #c82333;
+  }
+  

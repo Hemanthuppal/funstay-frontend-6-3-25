@@ -1,0 +1,227 @@
+
+.login-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1682686580433-2af05ee670ad?q=80&w=2940&auto=format&fit=crop') center/cover fixed;
+                
+}
+
+.login-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    max-width: 1100px;
+    width: 90%;
+    min-height: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.login-image-side {
+    position: relative;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url('https://marketplace.canva.com/EAFOUzHsGO0/1/0/1067w/canva-brown-vintage-travel-moodboard-photo-collage-93d75-etgmU.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login-image-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+}
+
+.login-logo-container {
+    position: relative;
+    z-index: 2;
+    width: 350px;
+    height: 350px;
+    background: url('https://marketplace.canva.com/EAFOUzHsGO0/1/0/1067w/canva-brown-vintage-travel-moodboard-photo-collage-93d75-etgmU.jpg') center/cover;
+    border-radius: 20px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-logo {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-tagline {
+    position: relative;
+    z-index: 2;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-weight: 500;
+    color: black;
+}
+
+.login-login-side {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    background: white;
+}
+
+.welcomeback {
+    color: #ff5757;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.login-input-group {
+    margin-bottom: 1.5rem;
+}
+
+.login-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.login-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.login-input:focus {
+    border-color: #ff5757;
+    outline: none;
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.login-forgot {
+    color: #ff5757;
+    text-decoration: none;
+}
+.forgot-password{
+    color: #ff5757;
+    text-decoration: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.login-btn-login {
+    background: #ff5757;
+    color: white;
+}
+
+.login-btn-login:hover {
+    background: #ff4242;
+}
+
+.login-btn-google {
+    border: 2px solid #eee;
+    background: white;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.login-btn-google:hover {
+    background: #f8f8f8;
+}
+
+.login-google-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.login-signup {
+    text-align: center;
+    color: #666;
+}
+
+.login-signup a {
+    color: #ff5757;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-image-side {
+        padding: 2rem;
+    }
+
+    .login-logo-container {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+.password-input-group {
+    position: relative;
+  }
+  
+  .password-toggle-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff5757; 
+  }
