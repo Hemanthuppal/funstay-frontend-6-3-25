@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "./ThemeContext";
 import Navbar from "../Navbar/Navbar";
 import "./Themes.css";
+import { baseURL } from "../../Apiservices/Api";
 
 const Themes = () => {
   const { changeThemeColor } = useContext(ThemeContext);
@@ -12,7 +13,7 @@ const Themes = () => {
 
   // 🔹 Fetch the active theme on page load
   useEffect(() => {
-    fetch("http://localhost:5000/api/get-active-theme")
+    fetch(`${baseURL}/api/get-active-theme`)
       .then((response) => response.json())
       .then((data) => {
         if (data.color_code) {
@@ -25,7 +26,7 @@ const Themes = () => {
 
   // 🔹 Fetch all themes and filter duplicates
   useEffect(() => {
-    fetch("http://localhost:5000/api/get-themes")
+    fetch(`${baseURL}/api/get-themes`)
       .then((response) => response.json())
       .then((data) => {
         // Filter out duplicate color codes
@@ -47,7 +48,7 @@ const Themes = () => {
     setSelectedColor(themeColor);
 
     try {
-      const response = await fetch("http://localhost:5000/api/set-theme", {
+      const response = await fetch(`${baseURL}/api/set-theme`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

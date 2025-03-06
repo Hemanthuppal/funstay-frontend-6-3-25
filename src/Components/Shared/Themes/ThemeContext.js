@@ -1,13 +1,14 @@
 import React, { createContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
+import { baseURL } from "../../Apiservices/Api";
 
 export const ThemeProvider = ({ children }) => {
   const [themeColor, setThemeColor] = useState(null); // Start with null instead of default color
   const [loading, setLoading] = useState(true); // Track loading state
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/get-active-theme")
+    fetch(`${baseURL}/api/get-active-theme`)
       .then((response) => response.json())
       .then((data) => {
         if (data.color_code) {
@@ -23,7 +24,7 @@ export const ThemeProvider = ({ children }) => {
     setThemeColor(color);
     document.documentElement.style.setProperty("--theme-color", color);
 
-    fetch("http://localhost:5000/api/set-theme", {
+    fetch(`${baseURL}/api/set-theme`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
