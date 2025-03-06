@@ -81,11 +81,16 @@ import Tabelfilter from "./Tabelfilter";
 import M_viewallleads from "./Components/Pages/Manager/Viewallleads/InDetailViewLeads";
 import S_viewallleads from "./Components/Pages/Sales-Executive/Viewallleads/InDetailViewLeads";
 import Destinations from "./Components/Pages/Admin/Destinations/Destinations";
+import Themes from "./Components/Shared/Themes/Themes";
+import ThemeProvider from "./Components/Shared/Themes/ThemeContext";
+import { FontSizeProvider } from "./Components/Shared/Font/FontContext";
 
 
 function App() {
     return (
         <AuthProvider>
+            <ThemeProvider>
+            <FontSizeProvider>
         <Router>
             <Routes>
                 <Route path="/login" element={<Login />} />
@@ -226,7 +231,7 @@ function App() {
                 <Route path="/a-comments/:leadid" element={<A_CommentsPage />} />
 
                 <Route path="/a-destinations" element={<Destinations />} />
-
+                <Route path="/themes" element={<Themes />} />
 
                 </Route>
             </Routes>
@@ -234,6 +239,8 @@ function App() {
          
  
         </Router>
+        </FontSizeProvider>
+        </ThemeProvider>
         </AuthProvider>
     );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useContext} from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Dashboard.css";
@@ -7,10 +7,12 @@ import { useNavigate } from "react-router-dom";
 import Navbar from '../../../Shared/Navbar/Navbar';
 import FollowUp from "./FollowUp";
 import { baseURL } from "../../../Apiservices/Api";
+import { ThemeContext } from "../../../Shared/Themes/ThemeContext";
 
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate(); 
+  const { themeColor } = useContext(ThemeContext);
   const [counts, setCounts] = useState({
     leadsToday: 0,
     confirmedToday: 0,
@@ -68,7 +70,7 @@ const Dashboard = () => {
       <Navbar onToggleSidebar={setCollapsed} />
       <div className={`dashboard1 ${collapsed ? 'collapsed' : ''}`}>
         <div className="container">
-          <div className="row admin-dashboard-cards-container justify-content-center mt-4">
+          <div className="row admin-dashboard-cards-container justify-content-center mt-4" style={{ "--theme-color": themeColor }}>
             <div className="col-lg-7 col-md-12">
               <div className="row">
                 {[

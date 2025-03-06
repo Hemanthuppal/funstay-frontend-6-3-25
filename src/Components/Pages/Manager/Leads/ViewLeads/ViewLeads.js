@@ -10,6 +10,7 @@ import axios from "axios";
 import { AuthContext } from "../../../../AuthContext/AuthContext";
 import { baseURL } from "../../../../Apiservices/Api";
 import { webhookUrl } from "../../../../Apiservices/Api";
+import { FontSizeContext } from "../../../../Shared/Font/FontContext";
 
 const ViewLeads = () => {
   const [message, setMessage] = useState('');
@@ -359,19 +360,20 @@ const ViewLeads = () => {
       {
         Header: "Lead Status",
         Cell: ({ row }) => {
+          const { fontSize } = useContext(FontSizeContext);
           const primaryStatus = row.original.primaryStatus;
           const secondaryStatus = row.original.secondaryStatus;
           const secondaryOptions = dropdownOptions.secondary[primaryStatus] || [];
           const isSecondaryDisabled = !primaryStatus || secondaryOptions.length === 0;
 
           return (
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center" style={{ fontSize: fontSize }}>
               <select
                 value={primaryStatus}
                 onChange={(e) =>
                   handlePrimaryStatusChange(e.target.value, row.original.leadid)
                 }
-                className="form-select me-2"
+                className="form-select me-2"style={{ fontSize: fontSize }}
               >
                 {!primaryStatus && <option value="">Select Primary Status</option>}
                 {dropdownOptions.primary.map((option) => (
@@ -386,7 +388,7 @@ const ViewLeads = () => {
                   handleSecondaryStatusChange(e.target.value, row.original.leadid)
                 }
                 className="form-select"
-                disabled={isSecondaryDisabled}
+                disabled={isSecondaryDisabled}style={{ fontSize: fontSize }}
               >
                 {!secondaryStatus && <option value="">Select Secondary Status</option>}
                 {secondaryOptions.map((option) => (
@@ -418,6 +420,7 @@ const ViewLeads = () => {
         Header: "Assign",
         accessor: "id",
         Cell: ({ cell: { row } }) => {
+          const { fontSize } = useContext(FontSizeContext);
           const assignedSalesId = row.original.assignedSalesId || "";
           const [selectedEmployee, setSelectedEmployee] = useState(assignedSalesId);
           const [showIcon, setShowIcon] = useState(false);
@@ -439,11 +442,11 @@ const ViewLeads = () => {
           };
 
           return (
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center"  style={{ fontSize: fontSize }} >
               <Form.Select
                 value={selectedEmployee}
                 onChange={handleChange}
-                className="me-2"
+                className="me-2"  style={{ fontSize: fontSize }} 
               >
                 <option value="">Select Employee</option>
                 {employees.map((employee) => (

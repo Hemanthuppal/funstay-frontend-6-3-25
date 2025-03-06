@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useContext} from 'react';
 import { useTable, usePagination, useGlobalFilter, useSortBy } from 'react-table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaCalendarAlt, FaTimes } from "react-icons/fa";
 import './TableLayout.css'
+import { ThemeContext } from "../../Shared/Themes/ThemeContext"; 
+import { FontSizeContext } from '../../Shared/Font/FontContext';
 
 // Global Search Filter Component
 function GlobalFilter({ globalFilter, setGlobalFilter, handleDateFilter }) {
@@ -90,7 +92,8 @@ export default function DataTable({ columns, data, initialSearchValue }) {
       setFilteredData(data); // Reset to original data if no date filters
     }
   };
-
+  const { themeColor } = useContext(ThemeContext);
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const {
     getTableProps,
     getTableBodyProps,
@@ -122,25 +125,46 @@ export default function DataTable({ columns, data, initialSearchValue }) {
       {/* Page Size Selector and Global Search Filter */}
       <div className="d-flex align-items-center justify-content-between mb-3">
         {/* Page Size Selector */}
-        <div>
-          <select
-            className="form-select form-select-sm filter-div"
-            value={pageSize}
-            onChange={(e) => setPageSize(Number(e.target.value))}
-           // Optional: Adjust width
-          >
-            {[20,50,100].map((size) => (
-              <option key={size} value={size}>
-                Show {size}
-              </option>
-            ))}
-          </select>
-          <span className="fw-bold">Total Records: {filteredData.length}</span>
-        </div>
+        <div className="row align-items-center">
+  {/* Left Section: Dropdowns */}
+  <div className="col-auto d-flex align-items-center gap-2">
+    {/* Show Entries Dropdown */}
+    <select
+      className="form-select form-select-sm"
+      value={pageSize}
+      onChange={(e) => setPageSize(Number(e.target.value))}
+    >
+      {[20, 50, 100].map((size) => (
+        <option key={size} value={size}>
+          Show {size}
+        </option>
+      ))}
+    </select>
+
+    {/* Font Size Dropdown */}
+    <select
+      className="form-select form-select-sm"
+      value={fontSize}
+      onChange={(e) => setFontSize(e.target.value)}
+    >
+      <option value="12px">Small</option>
+      <option value="14px">Medium</option>
+      <option value="16px">Default</option>
+      <option value="18px">Large</option>
+      <option value="20px">Extra Large</option>
+    </select>
+  </div>
+
+  
+  
+</div>
 
         {/* Global Search Filter */}
         <GlobalFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} handleDateFilter={handleDateFilter}/>
       </div>
+      <div className="mb-2">
+    <span className="fw-bold">Total Records: {filteredData.length}</span>
+  </div>
 
       {/* Table */}
       <div className="table-responsive">
@@ -153,11 +177,12 @@ export default function DataTable({ columns, data, initialSearchValue }) {
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     className="dataTable_headerCell"
                     style={{
-                      backgroundColor: '#f7941e', // Updated background color
+                      backgroundColor: themeColor,  // Updated background color
                       color: 'white',
                       border: '2px solid',
                       borderImage: 'linear-gradient(to right, #ff9966, #ff5e62) 1',
                       textAlign: 'center',
+                      fontSize: fontSize,
                     }}
                   >
                     {column.render('Header')}
@@ -179,11 +204,12 @@ export default function DataTable({ columns, data, initialSearchValue }) {
                       {...cell.getCellProps()}
                       className="dataTable_cell"
                       style={{
-                        borderTop: '2px solid #ff9966',
-                        borderBottom: '2px solid #ff9966',
-                        borderLeft: '2px solid #ff9966',
-                        borderRight: '2px solid #ff9966',
-                        borderImage: 'linear-gradient(to right, #ff9966, #ff5e62) 1',
+                        borderTop: `2px solid ${themeColor}`,
+                        borderBottom: `2px solid ${themeColor}`,
+                        borderLeft: `2px solid ${themeColor}`,
+                        borderRight: `2px solid ${themeColor}`,
+                        borderImage: `linear-gradient(to right, ${themeColor}, #ff5e62) 1`,
+                        fontSize: fontSize,
                       }}
                     >
                       {cell.render('Cell')}

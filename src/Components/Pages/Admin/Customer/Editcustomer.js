@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Row, Col, Card, Accordion, Form, Button } from "react-bootstrap";
@@ -7,11 +7,13 @@ import Navbar from "../../../Shared/Navbar/Navbar";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
 import { baseURL } from "../../../Apiservices/Api";
 import { getCountries, getCountryCallingCode } from "libphonenumber-js";
+import {ThemeContext} from "../../../Shared/Themes/ThemeContext";
 
 const EditLeadOppView = () => {
     const [message, setMessage] = useState(null);
     const [collapsed, setCollapsed] = useState(false);
     const [customer, setCustomer] = useState(null);
+    const { themeColor } = useContext(ThemeContext);
     const [travelOpportunity, setTravelOpportunity] = useState([]);
     const [loading, setLoading] = useState(true);
     const [travelLoading, setTravelLoading] = useState(true);
@@ -258,7 +260,7 @@ const EditLeadOppView = () => {
             <div className={`salesViewLeads ${collapsed ? "collapsed" : ""}`}>
                 <div className="lead-opportunity-view">
                     <Card className="mb-4">
-                        <Card.Header className="s-LeadOppView-modal-header">
+                        <Card.Header className="s-LeadOppView-modal-header" style={{ "--theme-color": themeColor }}>
                             <h2>Edit Customer Details</h2>
 
                         </Card.Header>

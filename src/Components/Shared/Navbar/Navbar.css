@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #ff9966, #ff5e62);
+  background:  var(--theme-color);
   padding: 10px 20px;
   position: fixed;
   top: 0;
@@ -110,7 +110,7 @@
   top: 60px;
   left: 0;
   bottom: 0;
-  background: linear-gradient(to right, #ff9966, #ff5e62);
+  background:  var(--theme-color);
   color: #464343;
   transition: width 0.3s ease;
   overflow-y: auto;

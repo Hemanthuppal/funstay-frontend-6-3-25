@@ -9,6 +9,7 @@ import { baseURL } from "../../../Apiservices/Api";
 import './PotentialLeads.css';
 import axios from 'axios';
 import { AuthContext } from '../../../AuthContext/AuthContext';
+import { FontSizeContext } from "../../../Shared/Font/FontContext";
 
 const Potentialleads = () => {
   const { authToken, userId } = useContext(AuthContext);
@@ -320,20 +321,21 @@ const Potentialleads = () => {
       Header: "Opportunity Status",
       accessor: "opportunityStatus",
       Cell: ({ row }) => {
+        const { fontSize } = useContext(FontSizeContext);
         const primaryStatus = row.original.opportunity_status1;
         const secondaryStatus = row.original.opportunity_status2;
         const secondaryOptions = dropdownOptions.secondary[primaryStatus] || [];
         const isSecondaryDisabled = !primaryStatus || secondaryOptions.length == 0;
 
         return (
-          <div className="d-flex align-items-center gap-2">
-            <select value={primaryStatus} onChange={(e) => handlePrimaryStatusChange(e.target.value, row.original.leadid)} className="form-select">
+          <div className="d-flex align-items-center gap-2"  style={{ fontSize: fontSize }}>
+            <select value={primaryStatus} onChange={(e) => handlePrimaryStatusChange(e.target.value, row.original.leadid)} className="form-select"  style={{ fontSize: fontSize }}>
               <option value="">Select Primary Status</option>
               {dropdownOptions.primary.map((option) => (
                 <option key={option} value={option}>{option}</option>
               ))}
             </select>
-            <select value={secondaryStatus} onChange={(e) => handleSecondaryStatusChange(e.target.value, row.original.leadid)} className="form-select" disabled={isSecondaryDisabled}>
+            <select value={secondaryStatus} onChange={(e) => handleSecondaryStatusChange(e.target.value, row.original.leadid)} className="form-select" disabled={isSecondaryDisabled}  style={{ fontSize: fontSize }}>
               <option value="">Select Secondary Status</option>
               {secondaryOptions.map((option) => (
                 <option key={option} value={option}>{option}</option>

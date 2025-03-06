@@ -8,6 +8,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate ,useLocation} from 'react-router-dom';
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { baseURL } from "../../Apiservices/Api";
+import { ThemeContext } from "../Themes/ThemeContext";
 
 const Sales = ({ onToggleSidebar }) => {
 
@@ -15,6 +16,7 @@ const Sales = ({ onToggleSidebar }) => {
     imageUrl: "",
   });
   const [notifications, setNotifications] = useState([]);
+  const { themeColor } = useContext(ThemeContext);
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -116,7 +118,7 @@ const Sales = ({ onToggleSidebar }) => {
   return (
     <>
       <div className="sales-container">
-        <div className="sales-header">
+        <div className="sales-header"  style={{ "--theme-color": themeColor }}>
           <div className="sales-header-left">
             <div
               className={`sales-sidebar-toggle ${collapsed ? 'collapsed' : ''}`}
@@ -227,7 +229,7 @@ const Sales = ({ onToggleSidebar }) => {
           </div>
         </div>
 
-        <div className={`sales-sidebar ${collapsed ? "collapsed" : ""}`}>
+        <div className={`sales-sidebar ${collapsed ? "collapsed" : ""}`} style={{ "--theme-color": themeColor }}>
           <div className="sales-position-sticky">
             <ul className="nav flex-column">
               <li

@@ -28,7 +28,7 @@
 
 
 .Manager-gradient-card {
-  background: linear-gradient(to right, #ff9966, #ff5e62);
+  background:  var(--theme-color)  ;
   color: white;
   border-radius: 10px;
   height: 150px;

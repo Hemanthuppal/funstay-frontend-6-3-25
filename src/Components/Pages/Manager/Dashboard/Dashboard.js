@@ -8,10 +8,12 @@ import FollowUp from "./FollowUp";
 import { baseURL } from "../../../Apiservices/Api";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../../Shared/Themes/ThemeContext";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext); 
+  const { themeColor } = useContext(ThemeContext);
   const [collapsed, setCollapsed] = useState(false);
   const [selectedDay, setSelectedDay] = useState("Tue");
   const [counts, setCounts] = useState({
@@ -107,7 +109,7 @@ const Dashboard = () => {
       <div className={`dashboard1 ${collapsed ? 'collapsed' : ''}`}>
         <div className="container">
        
-          <div className="row Manager-dashboard-cards-container justify-content-center mt-4">
+          <div className="row Manager-dashboard-cards-container justify-content-center mt-4"style={{ "--theme-color": themeColor }}>
             <div className="col-lg-7 col-md-12">
               <div className="row">
                 {[

@@ -8,6 +8,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { baseURL } from "../../Apiservices/Api";
+import {ThemeContext} from "../Themes/ThemeContext";
 
 const Manager = ({ onToggleSidebar }) => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const Manager = ({ onToggleSidebar }) => {
   });
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
+  const { themeColor } = useContext(ThemeContext);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showMenu, setShowMenu] = useState(false); // State for toggle menu
   const [notifications, setNotifications] = useState([]);
@@ -119,7 +121,7 @@ const Manager = ({ onToggleSidebar }) => {
   return (
     <>
       <div className="manager-container">
-        <div className="manager-header">
+        <div className="manager-header"style={{ "--theme-color": themeColor }}>
           <div className="manager-header-left">
             <div
               className={`manager-sidebar-toggle ${collapsed ? 'collapsed' : ''}`}
@@ -222,7 +224,7 @@ const Manager = ({ onToggleSidebar }) => {
         </div>
 
 
-        <div className={`manager-sidebar ${collapsed ? 'collapsed' : ''}`}>
+        <div className={`manager-sidebar ${collapsed ? 'collapsed' : ''}`} style={{ "--theme-color": themeColor }}>
           <div className="manager-position-sticky">
             <ul className="nav flex-column">
               <li className={`manager-nav-item ${location.pathname.startsWith("/m-dashboard") ? "active"

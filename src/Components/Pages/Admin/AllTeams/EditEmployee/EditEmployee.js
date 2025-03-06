@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { baseURL } from "../../../../Apiservices/Api";
 import Navbar from "../../../../Shared/Navbar/Navbar";
 import "./EditEmployee.css";
+import {ThemeContext} from "../../../../Shared/Themes/ThemeContext";
 
 const EditEmployee = () => {
   const { id } = useParams(); // Get employee ID from URL
   const navigate = useNavigate();
   const [selectedManagerId, setSelectedManagerId] = useState("");
   const [selectedManagerName, setSelectedManagerName] = useState("");
+  const { themeColor } = useContext(ThemeContext);
 
   const [collapsed, setCollapsed] = useState(false);
   const [newEmployee, setNewEmployee] = useState({
@@ -94,7 +96,7 @@ const EditEmployee = () => {
       <Navbar onToggleSidebar={setCollapsed} />
       <div className={`salesViewLeads ${collapsed ? "collapsed" : ""}`}>
         <div className="editemployee-form-container">
-          <h2 className="editemployee-form-header">Edit Employee</h2>
+          <h2 className="editemployee-form-header" style={{ "--theme-color": themeColor }}>Edit Employee</h2>
 
           {message && <div className="alert alert-success">{message}</div>}
           {error && <div className="alert alert-danger">{error}</div>}

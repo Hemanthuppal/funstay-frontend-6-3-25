@@ -1,6 +1,6 @@
 import React, { useState,useContext ,useEffect} from "react";
 import { Link } from "react-router-dom";
-import { FaUsers, FaCalendarCheck, FaUmbrellaBeach, FaWalking, FaFileInvoiceDollar, FaTachometerAlt, FaMapMarkerAlt,FaBell, FaEnvelope, FaCaretDown,FaRegAddressBook, FaCalendarAlt, FaBullhorn, FaUsersCog, FaHome, FaClipboardList, FaChartLine, FaUserFriends, FaPeopleCarry, FaHSquare          } from "react-icons/fa";
+import { FaUsers, FaCalendarCheck, FaUmbrellaBeach, FaWalking, FaFileInvoiceDollar, FaTachometerAlt, FaMapMarkerAlt,FaBell,FaPalette, FaEnvelope, FaCaretDown,FaRegAddressBook, FaCalendarAlt, FaBullhorn, FaUsersCog, FaHome, FaClipboardList, FaChartLine, FaUserFriends, FaPeopleCarry, FaHSquare          } from "react-icons/fa";
 import { IoHomeOutline, IoMenu } from "react-icons/io5";
 import "./Navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +9,7 @@ import { useNavigate,useLocation } from 'react-router-dom';
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { baseURL } from "../../Apiservices/Api";
 import { adminMail } from "../../Apiservices/Api";
+import { ThemeContext } from "../Themes/ThemeContext";
 
 const Navbar = ({ onToggleSidebar }) => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const Navbar = ({ onToggleSidebar }) => {
   });
   const [collapsed, setCollapsed] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const { themeColor } = useContext(ThemeContext);
   const [showMenu, setShowMenu] = useState(false); // State for toggle menu
   const navigate = useNavigate();
   const location = useLocation();
@@ -120,7 +122,7 @@ const Navbar = ({ onToggleSidebar }) => {
   return (
     <>
       <div className="admin-container">
-        <div className="admin-header">
+        <div className="admin-header" style={{ "--theme-color": themeColor }}>
           <div className="admin-header-left">
             <div
               className={`admin-sidebar-toggle ${collapsed ? 'collapsed' : ''}`}
@@ -174,6 +176,12 @@ const Navbar = ({ onToggleSidebar }) => {
                         </div>
                       )}
               </div>
+              <div className="admin-nav-icon-container">
+              <Link className="nav-link" to="/themes">
+ 
+  <FaPalette className="admin-nav-icon" style={{ marginLeft: "10px", cursor: "pointer" }} />
+  </Link>
+</div>
               {/* <div className="admin-nav-icon-container">
                 <FaEnvelope className="admin-nav-icon" />
                 <span className="admin-nav-badge">24</span>
@@ -224,7 +232,7 @@ const Navbar = ({ onToggleSidebar }) => {
           </div>
         </div>
 
-        <div className={`admin-sidebar ${collapsed ? 'collapsed' : ''}`}>
+        <div className={`admin-sidebar ${collapsed ? 'collapsed' : ''}`} style={{ "--theme-color": themeColor }}>
           <div className="admin-position-sticky">
             <ul className="nav flex-column">
               <li  className={`admin-nav-item ${location.pathname.startsWith("/dashboard") ? "active"

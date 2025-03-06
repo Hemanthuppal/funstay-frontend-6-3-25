@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useContext} from "react";
 import { Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './LeadDetails.css';
 import Navbar from '../../../Shared/Navbar/Navbar';
 import { baseURL } from "../../../Apiservices/Api";
 import { FaCopy } from "react-icons/fa";
+import { ThemeContext } from "../../../Shared/Themes/ThemeContext";
 
 const LeadOppView = () => {
     const [collapsed, setCollapsed] = useState(false);
     const [lead, setLead] = useState(null);
     const location = useLocation();
+    const { themeColor } = useContext(ThemeContext);
     const { leadid } = location.state;
     const navigate = useNavigate();
     const [message, setMessage] = useState('');
@@ -111,7 +113,7 @@ const LeadOppView = () => {
             <div className={`salesViewLeads ${collapsed ? "collapsed" : ""}`}>
                 <div className="lead-opportunity-view">
                     <Card className="mb-4">
-                        <Card.Header className='s-LeadOppView-modal-header'>
+                        <Card.Header className='s-LeadOppView-modal-header' style={{ "--theme-color": themeColor }}>
                             <h2> Customer and Opportunity Details</h2>
                         </Card.Header>
                         <Card.Body>
