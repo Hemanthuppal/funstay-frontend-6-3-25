@@ -23,8 +23,12 @@ const Dashboard = () => {
     leadsYesterday: 0,
     confirmedYesterday: 0,
     inProgressYesterday: 0,
-    metaAdsCount: 0,
-    notMetaAdsCount: 0
+    // metaAdsCount: 0,
+    // notMetaAdsCount: 0
+    facebookCount: 0,
+    referralCount: 0,
+    campaignCount: 0,
+    googleCount: 0,
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,8 +43,12 @@ const Dashboard = () => {
           `${baseURL}/leads/yesterday/${userId}`,
           `${baseURL}/leads/confirmed/yesterday/${userId}`,
           `${baseURL}/leads/in-progress/yesterday/${userId}`,
-          `${baseURL}/leads/meta-ads/${userId}`, 
-          `${baseURL}/leads/not-meta-ads/${userId}` 
+          // `${baseURL}/leads/meta-ads/${userId}`, 
+          // `${baseURL}/leads/not-meta-ads/${userId}`,
+          `${baseURL}/leads/facebook/${userId}`, 
+          `${baseURL}/leads/referral/${userId}` ,
+          `${baseURL}/leads/campaign/${userId}`, 
+          `${baseURL}/leads/google/${userId}`, 
         ];
 
         const responses = await Promise.all(
@@ -54,8 +62,12 @@ const Dashboard = () => {
           leadsYesterday: responses[3].data.count,
           confirmedYesterday: responses[4].data.count,
           inProgressYesterday: responses[5].data.count,
-          metaAdsCount: responses[6].data.count, 
-          notMetaAdsCount: responses[7].data.count 
+          // metaAdsCount: responses[6].data.count, 
+          // notMetaAdsCount: responses[7].data.count
+          facebookCount: responses[6].data.count,
+          referralCount: responses[7].data.count,
+          campaignCount: responses[8].data.count,
+          googleCount: responses[9].data.count,
         });
         setLoading(false);
       } catch (error) {
@@ -67,13 +79,19 @@ const Dashboard = () => {
     fetchData();
   }, [userId]); 
 
-  const totalLeads = counts.metaAdsCount + counts.notMetaAdsCount;
+  const totalLeads = counts.facebookCount + counts.referralCount + counts.campaignCount + counts.googleCount;
 
 
-  const metaAdsWidth = totalLeads > 0 ? (counts.metaAdsCount / totalLeads) * 100 : 0;
+  const facebookWidth = totalLeads > 0 ? (counts.facebookCount / totalLeads) * 100 : 0;
 
   
-  const notMetaAdsWidth = totalLeads > 0 ? (counts.notMetaAdsCount / totalLeads) * 100 : 0;
+  const referralWidth = totalLeads > 0 ? (counts.referralCount / totalLeads) * 100 : 0;
+
+
+  const campaignWidth = totalLeads > 0 ? (counts.campaignCount / totalLeads) * 100 : 0;
+
+  
+  const googleWidth = totalLeads > 0 ? (counts.googleCount / totalLeads) * 100 : 0;
 
   const scheduleData = [
     {
@@ -120,9 +138,9 @@ const Dashboard = () => {
                   navigateTo: "/m-view-leads"
                 },
                 {
-                  title: "Leads Confirmed Today",
+                  title: "Opportunities Today",
                   value: counts.confirmedToday,
-                  subtitle: `Confirmed Yesterday: ${counts.confirmedYesterday}`,
+                  subtitle: `Opportunities Yesterday: ${counts.confirmedYesterday}`,
                   navigateTo: "/m-potential-leads"
                 },
                 {
@@ -145,22 +163,36 @@ const Dashboard = () => {
                 ))}
               </div>
               <div className="card Manager-lead-card p-3 mt-4">
-                <h5>Most Lead</h5>
+                <h5>Leads Sources</h5>
                 <div>
                   {[
                     {
-                      label: "Social Media",
-                      icon: "fa-solid fa-share-nodes",
-                      value: counts.metaAdsCount,
-                      width: `${metaAdsWidth}%`, 
-                      color: "#6c63ff",
+                      label: "Facebook",
+                      icon: "fa-brands fa-facebook",
+                      value: counts.facebookCount,
+                      width: `${facebookWidth}%`, 
+                      color: "#1877F2",
                     },
                     {
-                      label: "Others",
-                      icon: "fa-solid fa-layer-group",
-                      value: counts.notMetaAdsCount,
-                      width: `${notMetaAdsWidth}%`, 
-                      color: "#dc3545",
+                      label: "Referral",
+                      icon: "fa-solid fa-user-plus",
+                      value: counts.referralCount,
+                      width: `${referralWidth}%`, 
+                      color: "#28A745",
+                    },
+                    {
+                      label: "Campaign",
+                      icon: "fa-solid fa-bullhorn",
+                      value: counts.campaignCount,
+                      width: `${campaignWidth}%`, 
+                      color: "#FFC107",
+                    },
+                    {
+                      label: "Google",
+                      icon: "fa-brands fa-google",
+                      value: counts.googleCount,
+                      width: `${googleWidth}%`, 
+                      color: "#EA4335",
                     },
                   ].map((lead, index) => (
                     <div

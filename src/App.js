@@ -86,9 +86,23 @@ import ThemeProvider from "./Components/Shared/Themes/ThemeContext";
 import { FontSizeProvider } from "./Components/Shared/Font/FontContext";
 
 
+import M_myopp from "./Components/Pages/Manager/MyOpp/MyOpp";
+import A_myopp from "./Components/Pages/Admin/Leads/Myleads/Myleads";
+import A_MyOpplead from "./Components/Pages/Admin/Potentialleads/MyOpp/Myopp";
+import M_Mylead from "./Components/Pages/Manager/Leads/Myleads/Myleads";
+import Archive from "./Components/Pages/Admin/Archieve/Archive";
+import M_EditMyOppLead from "./Components/Pages/Manager/Potentialleads/EditMyOpp/EditOppLead";
+import A_EditMyOppLead from "./Components/Pages/Admin/Potentialleads/EditMyOpp/EditOppLead";
+import M_MyLeadDetailss  from "./Components/Pages/Manager/Potentialleads/MyviewOpp";
+import A_MyLeadDetailss from "./Components/Pages/Admin/Potentialleads/MyOppView";
+
+import { FilterProvider } from "./Components/FilterContext/FilterContext";
+
+
 function App() {
     return (
         <AuthProvider>
+             <FilterProvider>
             <ThemeProvider>
             <FontSizeProvider>
         <Router>
@@ -233,6 +247,53 @@ function App() {
                 <Route path="/a-destinations" element={<Destinations />} />
                 <Route path="/themes" element={<Themes />} />
 
+
+
+
+
+
+
+
+
+                
+
+                <Route path="/m-myOpp" element={<M_myopp />} />
+                <Route path="/a-myleads" element={<A_myopp />} />
+
+
+                
+                <Route path="/a-myedit-lead/:leadid" element={<A_EditLead />} />
+                <Route path="/a-myview-lead/:leadid" element={<A_InDetailViewLeads />} />
+                <Route path="/a-mycomments/:leadid" element={<A_CommentsPage />} />
+                <Route path="/a-myedit-opportunity/:leadid" element={<A_EditOppLead />} />
+                <Route path="/a-mydetails/:leadid" element={<A_MyLeadDetailss />} />
+                <Route path="/a-mycreate-customer-opportunity/:leadid" element={<A_CreateCustomerOpportunity />} />
+
+
+                <Route path="/a-myopp" element={<A_MyOpplead />} />
+
+
+                <Route path="/m-myview-leads" element={<M_Mylead />} />
+                
+
+                <Route path="/m-myedit-lead/:leadid" element={<M_EditLead />} />
+                <Route path="/m-myview-lead/:leadid" element={<M_InDetailViewLeads />} />
+                <Route path="/m-mycomments/:leadid" element={<M_CommentsPage />} />
+                <Route path="/m-myedit-opportunity/:leadid" element={<M_EditOppLead />} />
+                <Route path="/m-mydetails/:leadid" element={<M_MyLeadDetailss />} />
+                <Route path="/m-mycreate-customer-opportunity/:leadid" element={<M_CreateCustomerOpportunity />} />
+                <Route path="/m-myopportunity-comments/:leadid" element={<M_CommentsPage />} />
+                <Route path="/a-myopportunity-comments/:leadid" element={<A_CommentsPage />} />
+                
+                <Route path="/a-archivedata" element={<Archive />} />
+
+
+
+
+                <Route path="/a-myedit-opportunity/:leadid" element={<A_EditMyOppLead />} />
+                <Route path="/m-myedit-opportunity/:leadid" element={<M_EditMyOppLead />} />
+
+
                 </Route>
             </Routes>
 
@@ -241,6 +302,7 @@ function App() {
         </Router>
         </FontSizeProvider>
         </ThemeProvider>
+        </FilterProvider>
         </AuthProvider>
     );
 }

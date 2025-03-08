@@ -1,11 +1,11 @@
-import React, { useState,useContext ,useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaUsers, FaCalendarCheck, FaUmbrellaBeach, FaWalking, FaFileInvoiceDollar, FaTachometerAlt, FaMapMarkerAlt,FaBell,FaPalette, FaEnvelope, FaCaretDown,FaRegAddressBook, FaCalendarAlt, FaBullhorn, FaUsersCog, FaHome, FaClipboardList, FaChartLine, FaUserFriends, FaPeopleCarry, FaHSquare          } from "react-icons/fa";
+import { FaArchive, FaMapMarkerAlt, FaBell, FaPalette, FaEnvelope, FaUserCheck, FaBriefcase, FaCaretDown,  FaHome, FaClipboardList, FaChartLine, FaUserFriends, FaPeopleCarry, FaHSquare } from "react-icons/fa";
 import { IoHomeOutline, IoMenu } from "react-icons/io5";
 import "./Navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { baseURL } from "../../Apiservices/Api";
 import { adminMail } from "../../Apiservices/Api";
@@ -21,7 +21,7 @@ const Navbar = ({ onToggleSidebar }) => {
   const [showMenu, setShowMenu] = useState(false); // State for toggle menu
   const navigate = useNavigate();
   const location = useLocation();
-  const { logout ,userName,userId,authToken} = useContext(AuthContext);
+  const { logout, userName, userId, authToken } = useContext(AuthContext);
   const [notifications, setNotifications] = useState([]);
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
   const toggleSidebar = () => {
@@ -61,7 +61,7 @@ const Navbar = ({ onToggleSidebar }) => {
     setShowDropdown(!showDropdown);
   };
 
-  
+
   const handleLogout = () => {
     logout(); // Clears authToken, userRole, and userId
     console.log('Logged out');
@@ -88,22 +88,22 @@ const Navbar = ({ onToggleSidebar }) => {
     await markNotificationAsRead(notification.id);
     setNotifications((prev) => prev.filter((n) => n.id !== notification.id));
     setShowNotificationDropdown(false);
-  
+
     // Navigate based on whether the notification has a leadid
     if (notification.leadid) {
       navigate(`/a-opportunity-comments/${notification.leadid}`);
     } else {
       navigate('/a-view-lead');
     }
-  
-     // Use a timeout to ensure navigation happens before the reload
-     setTimeout(() => {
+
+    // Use a timeout to ensure navigation happens before the reload
+    setTimeout(() => {
       window.location.reload();
     }, 0);
   };
 
   useEffect(() => {
-    const email= `${adminMail}`;
+    const email = `${adminMail}`;
     const fetchNotifications = async () => {
       try {
         const response = await fetch(`${baseURL}/email/notifications?managerid=${email}`);
@@ -136,52 +136,52 @@ const Navbar = ({ onToggleSidebar }) => {
 
           <div className="admin-header-right">
             {/* Add Leads Button */}
-           
+
 
             <div className="admin-header-icons">
               <div className="admin-nav-icon-container" onClick={toggleNotificationDropdown}>
                 <FaBell className="admin-nav-icon" />
                 {/* <span className="admin-nav-badge">12</span> */}
                 {notifications.length > 0 && <span className="admin-nav-badge">{notifications.length}</span>}
-                      {showNotificationDropdown && (
-                        <div className="notification-dropdown">
-                          <div className="notification-dropdown-header">Notifications</div>
-                          <div className="notification-dropdown-body">
-                            {notifications.length === 0 ? (
-                              <div className="notification-item">No new notifications</div>
-                            ) : (
-                              notifications.map((notification) => (
-                                <div
-                                  key={notification.id}
-                                  className="notification-item"
-                                  onClick={() => handleNotificationClick(notification)}
-                                  style={{ padding: "8px", cursor: "pointer" }}
-                                >
-                                  {/* <div style={{ fontWeight: notification.read ? "normal" : "bold" }}>
+                {showNotificationDropdown && (
+                  <div className="notification-dropdown">
+                    <div className="notification-dropdown-header">Notifications</div>
+                    <div className="notification-dropdown-body">
+                      {notifications.length === 0 ? (
+                        <div className="notification-item">No new notifications</div>
+                      ) : (
+                        notifications.map((notification) => (
+                          <div
+                            key={notification.id}
+                            className="notification-item"
+                            onClick={() => handleNotificationClick(notification)}
+                            style={{ padding: "8px", cursor: "pointer" }}
+                          >
+                            {/* <div style={{ fontWeight: notification.read ? "normal" : "bold" }}>
                                     {notification.message}
                                     
                                   </div> */}
-                                  <div style={{ fontWeight: notification.read ? "normal" : "bold" }}>
-  {notification.message.length > 40 
-    ? `${notification.message.slice(0, 40)}...` 
-    : notification.message}
-</div>
-                                  <div style={{ fontSize: "0.8em", color: "#888" }}>
-                                    {new Date(notification.createdAt).toLocaleString()}
-                                  </div>
-                                </div>
-                              ))
-                            )}
+                            <div style={{ fontWeight: notification.read ? "normal" : "bold" }}>
+                              {notification.message.length > 40
+                                ? `${notification.message.slice(0, 40)}...`
+                                : notification.message}
+                            </div>
+                            <div style={{ fontSize: "0.8em", color: "#888" }}>
+                              {new Date(notification.createdAt).toLocaleString()}
+                            </div>
                           </div>
-                        </div>
+                        ))
                       )}
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="admin-nav-icon-container">
-              <Link className="nav-link" to="/themes">
- 
-  <FaPalette className="admin-nav-icon" style={{ marginLeft: "10px", cursor: "pointer" }} />
-  </Link>
-</div>
+                <Link className="nav-link" to="/themes">
+
+                  <FaPalette className="admin-nav-icon" style={{ marginLeft: "10px", cursor: "pointer" }} />
+                </Link>
+              </div>
               {/* <div className="admin-nav-icon-container">
                 <FaEnvelope className="admin-nav-icon" />
                 <span className="admin-nav-badge">24</span>
@@ -190,19 +190,19 @@ const Navbar = ({ onToggleSidebar }) => {
               <div className="admin-nav-icon-container" onClick={handleProfileClick}>
                 <div className="admin-nav-profile">
 
-                    {formData.imageUrl ? (
-                          <img
-                            src={`${baseURL}${formData.imageUrl}`}
-                            alt="Profile"
-                             className="admin-nav-profile-img"
-                          />
-                        ) : (
-                          <img
-                            src="https://i.pravatar.cc/100?img=4" // Fallback image
-                            alt="Default Profile"
-                             className="admin-nav-profile-img"
-                          />
-                        )}
+                  {formData.imageUrl ? (
+                    <img
+                      src={`${baseURL}${formData.imageUrl}`}
+                      alt="Profile"
+                      className="admin-nav-profile-img"
+                    />
+                  ) : (
+                    <img
+                      src="https://i.pravatar.cc/100?img=4" // Fallback image
+                      alt="Default Profile"
+                      className="admin-nav-profile-img"
+                    />
+                  )}
                   {/* <img
                     src="https://i.pravatar.cc/40?img=4"
                     alt="Profile"
@@ -216,11 +216,11 @@ const Navbar = ({ onToggleSidebar }) => {
                       <strong>{userName}</strong>
                     </div>
                     <div
-      className="admin-nav-profile-item"
-      onClick={() => navigate("/a-profile")}
-    >
-      Your Profile
-    </div>
+                      className="admin-nav-profile-item"
+                      onClick={() => navigate("/a-profile")}
+                    >
+                      Your Profile
+                    </div>
                     {/* <div className="admin-nav-profile-item">Your Profile</div> */}
                     {/* <div className="admin-nav-profile-item">Settings</div>
                     <div className="admin-nav-profile-item">Help Center</div> */}
@@ -235,52 +235,87 @@ const Navbar = ({ onToggleSidebar }) => {
         <div className={`admin-sidebar ${collapsed ? 'collapsed' : ''}`} style={{ "--theme-color": themeColor }}>
           <div className="admin-position-sticky">
             <ul className="nav flex-column">
-              <li  className={`admin-nav-item ${location.pathname.startsWith("/dashboard") ? "active"
-                  : ""
-                  }`}>
+              <li className={`admin-nav-item ${location.pathname.startsWith("/dashboard") ? "active"
+                : ""
+                }`}>
                 <Link className="nav-link" to="/dashboard" onClick={handleNavItemClick}>
                   <FaHome className="admin-nav-icon" />
                   {!collapsed && <span className="link_text">Dashboard</span>}
                 </Link>
               </li>
 
+              
+
+<li
+  className={`admin-nav-item ${location.pathname.startsWith("/a-view-lead") ||
+    location.pathname.startsWith("/a-edit-lead") ||
+    location.pathname.startsWith("/a-add-leads") ||
+    location.pathname.startsWith("/a-comments") ||
+    location.pathname.startsWith("/a-create-customer-opportunity")
+    ? "active"
+    : ""
+    }`}
+>
+  <Link className="nav-link" to="/a-view-lead" onClick={handleNavItemClick}>
+    <FaClipboardList className="admin-nav-icon" />
+    {!collapsed && <span className="link_text">All Leads</span>}
+  </Link>
+</li>
+
+<li
+  className={`admin-nav-item ${location.pathname.startsWith("/a-myleads") ||
+    location.pathname.startsWith("/a-myedit-lead") ||
+    location.pathname.startsWith("/a-myadd-leads") ||
+    location.pathname.startsWith("/a-mycomments") ||
+    location.pathname.startsWith("/a-myview-lead") ||
+    location.pathname.startsWith("/a-mycreate-customer-opportunity")
+    ? "active"
+    : ""
+    }`}
+>
+  <Link className="nav-link" to="/a-myleads" onClick={handleNavItemClick}>
+    <FaUserCheck className="admin-nav-icon" /> 
+    {!collapsed && <span className="link_text">My Leads</span>}
+  </Link>
+</li>
+
+<li
+  className={`admin-nav-item ${location.pathname.startsWith("/a-potential-leads") ||
+    location.pathname.startsWith("/a-edit-opportunity") ||
+    location.pathname.startsWith("/a-opportunity-comments") ||
+    location.pathname.startsWith("/a-details")
+    ? "active"
+    : ""
+    }`}
+>
+  <Link className="nav-link" to="/a-potential-leads" onClick={handleNavItemClick}>
+    <FaChartLine className="admin-nav-icon" />
+    {!collapsed && <span className="link_text">All Opportunities</span>}
+  </Link>
+</li>
+
+<li
+  className={`admin-nav-item ${location.pathname.startsWith("/a-myopp") ||
+    location.pathname.startsWith("/a-myedit-opportunity") ||
+    location.pathname.startsWith("/a-myopportunity-comments") ||
+    location.pathname.startsWith("/a-mydetails")
+    ? "active"
+    : ""
+    }`}
+>
+  <Link className="nav-link" to="/a-myopp" onClick={handleNavItemClick}>
+    <FaBriefcase className="admin-nav-icon" />
+    {!collapsed && <span className="link_text">My Opportunities</span>}
+  </Link>
+</li>
+
               <li
-                className={`admin-nav-item ${location.pathname.startsWith("/a-view-lead") ||
-                  location.pathname.startsWith("/a-edit-lead") ||
-                  location.pathname.startsWith("/a-add-leads") ||
-                  location.pathname.startsWith("/a-comments") ||
-                  location.pathname.startsWith("/a-view-lead") ||
-                  location.pathname.startsWith("/a-create-customer-opportunity")
+                className={`admin-nav-item ${location.pathname.startsWith("/a-customers") ||
+                  location.pathname.startsWith("/a-customer-details") ||
+                  location.pathname.startsWith("/a-customerdetails") ||
+                  location.pathname.startsWith("/a-editcustomerdetails")
                   ? "active"
                   : ""
-                  }`}
-              >
-                <Link className="nav-link" to="/a-view-lead" onClick={handleNavItemClick}>
-                  <FaClipboardList className="admin-nav-icon" />
-                  {!collapsed && <span className="link_text">All Leads</span>}
-                </Link>
-              </li>
-              <li
-                className={`admin-nav-item ${location.pathname.startsWith("/a-potential-leads") ||
-                    location.pathname.startsWith("/a-edit-opportunity") ||
-                    location.pathname.startsWith("/a-opportunity-comments") ||
-                    location.pathname.startsWith("/a-details")
-                    ? "active"
-                    : ""
-                  }`}
-              >
-                <Link className="nav-link" to="/a-potential-leads" onClick={handleNavItemClick}>
-                  <FaChartLine className="admin-nav-icon" />
-                  {!collapsed && <span className="link_text">All Opportunities</span>}
-                </Link>
-              </li>
-              <li
-                className={`admin-nav-item ${location.pathname.startsWith("/a-customers") ||                   
-                    location.pathname.startsWith("/a-customer-details") ||
-                    location.pathname.startsWith("/a-customerdetails") ||
-                    location.pathname.startsWith("/a-editcustomerdetails") 
-                    ? "active"
-                    : ""
                   }`}
               >
                 <Link className="nav-link" to="/a-customers" onClick={handleNavItemClick}>
@@ -289,29 +324,45 @@ const Navbar = ({ onToggleSidebar }) => {
                 </Link>
               </li>
               <li
-                className={`admin-nav-item ${location.pathname.startsWith("/a-destinations")                   
-                    
-                   
-                    ? "active"
-                    : ""
+                className={`admin-nav-item ${location.pathname.startsWith("/a-destinations")
+
+
+                  ? "active"
+                  : ""
                   }`}
               >
                 <Link className="nav-link" to="/a-destinations" onClick={handleNavItemClick}>
-                  <FaMapMarkerAlt  className="admin-nav-icon" />
+                  <FaMapMarkerAlt className="admin-nav-icon" />
                   {!collapsed && <span className="link_text">All Destinations </span>}
                 </Link>
 
 
-               
+
               </li>
               <li
-                className={`admin-nav-item ${location.pathname.startsWith("/a-allteams") ||                   
-                    location.pathname.startsWith("/addemployee") ||
-                    location.pathname.startsWith("/team-members") ||
-                    location.pathname.startsWith("/editemployee") 
-                   
-                    ? "active"
-                    : ""
+                className={`admin-nav-item ${location.pathname.startsWith("/a-archivedata")
+
+
+                  ? "active"
+                  : ""
+                  }`}
+              >
+                <Link className="nav-link" to="/a-archivedata" onClick={handleNavItemClick}>
+                  <FaArchive className="admin-nav-icon" />
+                  {!collapsed && <span className="link_text">Archieved Data </span>}
+                </Link>
+
+
+
+              </li>
+              <li
+                className={`admin-nav-item ${location.pathname.startsWith("/a-allteams") ||
+                  location.pathname.startsWith("/addemployee") ||
+                  location.pathname.startsWith("/team-members") ||
+                  location.pathname.startsWith("/editemployee")
+
+                  ? "active"
+                  : ""
                   }`}
               >
                 <Link className="nav-link" to="/a-allteams" onClick={handleNavItemClick}>
@@ -320,7 +371,7 @@ const Navbar = ({ onToggleSidebar }) => {
                 </Link>
 
 
-               
+
               </li>
 
               {/* <li
@@ -341,7 +392,7 @@ const Navbar = ({ onToggleSidebar }) => {
               </li> */}
 
 
-             
+
             </ul>
           </div>
         </div>

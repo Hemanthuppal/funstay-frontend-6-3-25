@@ -48,7 +48,7 @@ const ViewLeads = () => {
       try {
         const response = await fetch(`${webhookUrl}/api/enquiries`);
         const data = await response.json();
-        const filteredData = data.filter((enquiry) => enquiry.managerid == userId && enquiry.status == "lead");
+        const filteredData = data.filter((enquiry) =>enquiry.managerAssign !== userId &&  enquiry.managerid == userId && enquiry.status == "lead");
         setData(filteredData);
       } catch (error) {
         console.error("Error fetching enquiries:", error);
@@ -207,7 +207,34 @@ const ViewLeads = () => {
       console.error("Error assigning lead:", error);
     }
   };
-
+  const handleSelfAssign = async (leadid) => {
+    try {
+      const response = await axios.post(`${baseURL}/api/assign-manager`, {
+        leadid,
+        userId, // Use the userId from context
+      });
+  
+      if (response.status === 200) {
+        setMessage(response.data.message);
+        setTimeout(() => setMessage(""), 3000);
+        window.location.reload();
+  
+        // Update the local state to reflect the assignment
+        setData((prevData) =>
+          prevData.map((lead) =>
+            lead.leadid === leadid ? { ...lead, managerAssign: userId } : lead
+          )
+        );
+      } else {
+        setMessage('Failed to assign the lead. Please try again.');
+        setTimeout(() => setMessage(""), 3000);
+      }
+    } catch (error) {
+      console.error("Error assigning lead:", error);
+      setMessage('An error occurred while assigning the lead. Please try again.');
+      setTimeout(() => setMessage(""), 3000);
+    }
+  };
   
     useEffect(() => {
       localStorage.setItem("searchTerm-1", searchTerm);
@@ -420,35 +447,40 @@ const ViewLeads = () => {
         Header: "Assign",
         accessor: "id",
         Cell: ({ cell: { row } }) => {
-          const { fontSize } = useContext(FontSizeContext);
           const assignedSalesId = row.original.assignedSalesId || "";
           const [selectedEmployee, setSelectedEmployee] = useState(assignedSalesId);
           const [showIcon, setShowIcon] = useState(false);
-
+      
           const handleChange = (e) => {
             const newValue = e.target.value;
             setSelectedEmployee(newValue);
-            setShowIcon(newValue !== assignedSalesId); // Show icon only if selection changes
+            setShowIcon(newValue !== assignedSalesId); 
           };
-
-          const handleAssignClick = () => {
+      
+          const handleAssignClick = async () => {
             if (selectedEmployee) {
-              handleAssignLead(row.original.leadid, selectedEmployee);
+              if (selectedEmployee === "self") {
+                // Call the new API for self assignment
+                await handleSelfAssign(row.original.leadid);
+              } else {
+                handleAssignLead(row.original.leadid, selectedEmployee);
+              }
               setShowIcon(false); // Hide icon after assignment
             } else {
               setMessage("Please select an employee to assign the lead.");
               setTimeout(() => setMessage(""), 3000);
             }
           };
-
+      
           return (
-            <div className="d-flex align-items-center"  style={{ fontSize: fontSize }} >
+            <div className="d-flex align-items-center">
               <Form.Select
                 value={selectedEmployee}
                 onChange={handleChange}
-                className="me-2"  style={{ fontSize: fontSize }} 
+                className="me-2"
               >
                 <option value="">Select Employee</option>
+                <option value="self">Self</option> {/* Add Self option */}
                 {employees.map((employee) => (
                   <option key={employee.id} value={employee.id}>
                     {employee.name}
@@ -508,7 +540,7 @@ const ViewLeads = () => {
           <div className="ViewLead-table-container">
             <Row className="mb-3">
               <Col className="d-flex justify-content-between align-items-center">
-                <h3>Lead Details</h3>
+                <h3>My Team Lead Details</h3>
                 {message && <div className="alert alert-info">{message}</div>}
                 <Button onClick={handleAddLead}>Add Leads</Button>
               </Col>

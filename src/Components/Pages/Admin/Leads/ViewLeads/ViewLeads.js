@@ -87,6 +87,26 @@ const AdminViewLeads = () => {
     }
   };
 
+  const handleArchive = async (leadid) => {
+    try {
+      const response = await fetch(`${baseURL}/api/archiveByLeadId/${leadid}`, {
+        method: 'PUT',
+      });
+
+      if (response.ok) {
+        setData((prevData) => prevData.filter((item) => item.leadid !== leadid)); // Remove from active list
+        setMessage('The lead has been archived successfully.');
+      } else {
+        setMessage('Failed to archive the lead. Please try again later.');
+      }
+      setTimeout(() => setMessage(""), 3000);
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage('An unexpected error occurred while archiving the lead.');
+      setTimeout(() => setMessage(""), 3000);
+    }
+  };
+
 
   const dropdownOptions = {
     primary: ["New", "No Response", "Duplicate", "False Lead", "Junk", "Plan Cancelled"],
@@ -158,7 +178,7 @@ const AdminViewLeads = () => {
         const response = await fetch(`${webhookUrl}/api/enquiries`);
         const data = await response.json();
 
-        const filteredData = data.filter((enquiry) => enquiry.status == 'lead');
+        const filteredData = data.filter((enquiry) =>enquiry.adminAssign !== 'admin' &&  enquiry.status == 'lead');
         setData(filteredData);
       } catch (error) {
         console.error('Error fetching enquiries:', error);
@@ -242,6 +262,32 @@ const AdminViewLeads = () => {
     fetchManagers();
   }, [userId]);
 
+
+  const handleSelfAssign = async (leadid) => {
+    try {
+      const response = await axios.post(`${baseURL}/api/assign-admin`, { leadid });
+  
+      if (response.status === 200) {
+        setMessage(response.data.message);
+        setTimeout(() => setMessage(""), 3000);
+        window.location.reload();
+  
+        // Update the local state to reflect the assignment
+        setData((prevData) =>
+          prevData.map((lead) =>
+            lead.leadid === leadid ? { ...lead, adminAssign: "admin" } : lead
+          )
+        );
+      } else {
+        setMessage("Failed to assign the lead. Please try again.");
+        setTimeout(() => setMessage(""), 3000);
+      }
+    } catch (error) {
+      console.error("Error assigning lead:", error);
+      setMessage("An error occurred while assigning the lead. Please try again.");
+      setTimeout(() => setMessage(""), 3000);
+    }
+  };
 
   useEffect(() => {
     localStorage.setItem("searchTerm-1", searchTerm);
@@ -481,7 +527,6 @@ const AdminViewLeads = () => {
       {
         Header: "Manager ",
         Cell: ({ row }) => {
-          const { fontSize } = useContext(FontSizeContext);
           const assignedManagerId = row.original.managerid || "";
           const assignedManagerName = row.original.assign_to_manager || "";
 
@@ -507,7 +552,14 @@ const AdminViewLeads = () => {
             if (selectedManager) {
               const [managerid, assignee] = selectedManager.split("|");
 
-              await handleAssignToChange(assignee, row.original.leadid, managerid);
+              if (selectedManager === "self") {
+                // Call the new API for self assignment
+                await handleSelfAssign(row.original.leadid);
+              } else {
+                handleAssignToChange(assignee, row.original.leadid, managerid);
+              }
+
+              // await handleAssignToChange(assignee, row.original.leadid, managerid);
 
               // ✅ Update row data manually to trigger re-render
               row.original.managerid = managerid;
@@ -520,14 +572,15 @@ const AdminViewLeads = () => {
           };
 
           return (
-            <div className="d-flex align-items-center"  style={{ fontSize: fontSize }}>
+            <div className="d-flex align-items-center">
               <select
                 value={selectedManager}
                 onChange={handleChange}
                 className="form-select me-2"
-                style={{ maxWidth: "150px" ,fontSize: fontSize}}
+                style={{ maxWidth: "150px" }}
               >
                 <option value="">Select Assignee</option>
+                <option value="self">Self</option>
                 {managers.map((manager, index) => (
                   <option key={index} value={`${manager.id}|${manager.name}`}>
                     {manager.name}
@@ -633,7 +686,7 @@ const AdminViewLeads = () => {
             />
             <FaTrash
               style={{ color: "ff9966", cursor: "pointer" }}
-              onClick={() => handleDelete(row.original.leadid)}
+              onClick={() => handleArchive(row.original.leadid)}
             />
             <FaEye
               style={{ color: "ff9966", cursor: "pointer" }}
@@ -685,7 +738,7 @@ const AdminViewLeads = () => {
           <div className="admin-ViewLead-table-container">
             <Row className="mb-3">
               <Col className="d-flex justify-content-between align-items-center">
-                <h3>Lead Details</h3>
+                <h3>All Lead Details</h3>
                 {message && <div className="alert alert-info">{message}</div>}
                 <Button onClick={handleAddLead}>Add Leads</Button>
               </Col>

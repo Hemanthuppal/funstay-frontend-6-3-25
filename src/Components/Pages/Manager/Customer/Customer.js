@@ -113,10 +113,10 @@ const SalesCustomer = () => {
 
   const columns = React.useMemo(
     () => [
-      {
-        Header: "S.No",
-        accessor: (row, index) => index + 1,
-      },
+      // {
+      //   Header: "S.No",
+      //   accessor: (row, index) => index + 1,
+      // },
       {
         Header: "Customer ID",
         accessor: "id",
@@ -188,7 +188,11 @@ const SalesCustomer = () => {
           </div>
         ),
       },
+      {
+        Header: "Origin City",
+        accessor: "origincity",
 
+      },
 
       {
         Header: "Actions",

@@ -55,46 +55,46 @@ const LeadOppView = () => {
         if (!newComment.trim()) return;
         const trimmedComment = newComment.trim();
         const commentName = `${userName} (Manager)`;
-        
+
         const comment = {
-          name: commentName,
-          leadid: leadid,
-          timestamp: new Date().toISOString(),
-          text: trimmedComment,
-          notificationmessage: `${commentName}: ${trimmedComment}  `,
-         
-          userId: assignedSalesId,
-          email: `${adminMail}`
+            name: commentName,
+            leadid: leadid,
+            timestamp: new Date().toISOString(),
+            text: trimmedComment,
+            notificationmessage: `${commentName}: ${trimmedComment}  `,
+
+            userId: assignedSalesId,
+            email: `${adminMail}`
         };
-        
-       
+
+
         console.log(JSON.stringify(comment, null, 2));
         console.log(assignedSalesId)
-    
+
         try {
-          const response = await fetch(`${baseURL}/comments/add`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(comment),
-          });
-    
-          if (!response.ok) {
-            throw new Error("Failed to add comment");
-          }
-    
-          const savedComment = await response.json();
-    
-          // Update the state to display the new comment
-          setLead((prevLead) => ({
-            ...prevLead,
-            comments: [...prevLead.comments, savedComment]
-          }));
-    
-          setNewComment(''); // Clear input after submission
+            const response = await fetch(`${baseURL}/comments/add`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(comment),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to add comment");
+            }
+
+            const savedComment = await response.json();
+
+            // Update the state to display the new comment
+            setLead((prevLead) => ({
+                ...prevLead,
+                comments: [...prevLead.comments, savedComment]
+            }));
+
+            setNewComment(''); // Clear input after submission
         } catch (error) {
-          console.error('Error adding comment:', error);
+            console.error('Error adding comment:', error);
         }
-      };
+    };
 
     const handleEdit = (leadId) => {
         navigate(`/m-edit-opportunity/${leadId}`, {
@@ -238,7 +238,7 @@ const LeadOppView = () => {
                                         </div>
 
                                         {/* Display Comments */}
-                                        <div className="comment-list" style={{ maxHeight: "300px", overflowY: "auto", border: "1px solid #ddd", padding: "10px", borderRadius: "5px", marginTop: "15px",backgroundColor:"#f1f7ff"}}>
+                                        <div className="comment-list" style={{ maxHeight: "300px", overflowY: "auto", border: "1px solid #ddd", padding: "10px", borderRadius: "5px", marginTop: "15px", backgroundColor: "#f1f7ff" }}>
                                             {sortedComments.length > 0 ? (
                                                 sortedComments.map((comment) => (
                                                     <div key={comment.id} className="comment-item">

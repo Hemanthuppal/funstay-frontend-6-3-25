@@ -99,10 +99,10 @@ const SalesCustomer = () => {
   // Columns for DataTable component
   const columns = React.useMemo(
     () => [
-      {
-        Header: "S.No",
-        accessor: (row, index) => index + 1,  // This will generate the serial number based on the row index
-      },
+      // {
+      //   Header: "S.No",
+      //   accessor: (row, index) => index + 1, 
+      // },
       {
         Header: "Customer ID",
         accessor: "id", // This is the key in your customer data
@@ -175,7 +175,11 @@ const SalesCustomer = () => {
         ),
       },
 
+      {
+        Header: "Origin City",
+        accessor: "origincity",
 
+      },
 
       {
         Header: "Actions",

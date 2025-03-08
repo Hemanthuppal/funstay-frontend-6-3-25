@@ -20,12 +20,15 @@ const Dashboard = () => {
     leadsYesterday: 0,
     confirmedYesterday: 0,
     inProgressYesterday: 0,
-    metaAdsCount: 0,
-    notMetaAdsCount: 0
+    // metaAdsCount: 0,
+    // notMetaAdsCount: 0
+    facebookCount: 0,
+    referralCount: 0,
+    campaignCount: 0,
+    googleCount: 0,
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,8 +39,12 @@ const Dashboard = () => {
           `${baseURL}/leads/yesterday`,
           `${baseURL}/leads/confirmed/yesterday`,
           `${baseURL}/leads/in-progress/yesterday`,
-          `${baseURL}/leads/meta-ads`,
-          `${baseURL}/leads/not-meta-ads`
+          // `${baseURL}/leads/meta-ads`,
+          // `${baseURL}/leads/not-meta-ads`
+          `${baseURL}/leads/facebook`,
+          `${baseURL}/leads/referral`,
+          `${baseURL}/leads/campaign`,
+          `${baseURL}/leads/google`,
         ];
 
         const responses = await Promise.all(endpoints.map(url => axios.get(url)));
@@ -49,8 +56,13 @@ const Dashboard = () => {
           leadsYesterday: responses[3].data.count,
           confirmedYesterday: responses[4].data.count,
           inProgressYesterday: responses[5].data.count,
-          metaAdsCount: responses[6].data.count,
-          notMetaAdsCount: responses[7].data.count
+          // metaAdsCount: responses[6].data.count,
+          // notMetaAdsCount: responses[7].data.count
+          facebookCount: responses[6].data.count,
+          referralCount: responses[7].data.count,
+          campaignCount: responses[8].data.count,
+          googleCount: responses[9].data.count,
+
         });
         setLoading(false);
       } catch (error) {
@@ -81,9 +93,9 @@ const Dashboard = () => {
                     navigateTo: "/a-view-lead"
                   },
                   {
-                    title: "Leads Confirmed Today",
+                    title: "Opportunities Today",
                     value: counts.confirmedToday,
-                    subtitle: `Confirmed Yesterday: ${counts.confirmedYesterday}`,
+                    subtitle: `Opportunities Yesterday: ${counts.confirmedYesterday}`,
                     navigateTo: "/a-potential-leads"
                   },
                   {
@@ -108,7 +120,7 @@ const Dashboard = () => {
                   </div>
                 ))}
               </div>
-              <div className="card admin-lead-card p-3 mt-4">
+              {/* <div className="card admin-lead-card p-3 mt-4">
                 <h5>Most Lead</h5>
                 <div>
                   {[
@@ -125,6 +137,56 @@ const Dashboard = () => {
                       value: counts.notMetaAdsCount,
                       width: `${(counts.notMetaAdsCount / (counts.metaAdsCount + counts.notMetaAdsCount)) * 100 || 0}%`,
                       color: "#dc3545",
+                    },
+                  ].map((lead, index) => (
+                    <div key={index} className="admin-lead-item mb-3 d-flex align-items-center">
+                      <div className="admin-icon-container me-3">
+                        <i className={`${lead.icon}`} style={{ color: lead.color }}></i>
+                      </div>
+                      <div className="flex-grow-1">
+                        <p className="mb-1 d-flex justify-content-between">
+                          <span>{lead.label}</span>
+                          <span>{lead.value}</span>
+                        </p>
+                        <div className="progress">
+                          <div className="progress-bar" style={{ width: lead.width, backgroundColor: lead.color }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div> */}
+                <div className="card admin-lead-card p-3 mt-4">
+                <h5>Leads Sources</h5>
+                <div>
+                  {[
+                    {
+                      label: "Facebook",
+                      icon: "fa-brands fa-facebook",
+                      value: counts.facebookCount,
+                      width: `${(counts.facebookCount / (counts.facebookCount + counts.referralCount + counts.campaignCount + counts.googleCount)) * 100 || 0}%`,
+                      color: "#1877F2",
+                    },
+                    {
+                      label: "Referral",
+                      icon: "fa-solid fa-user-plus",
+                      value: counts.referralCount,
+                      width: `${(counts.referralCount / (counts.facebookCount + counts.referralCount + counts.campaignCount + counts.googleCount)) * 100 || 0}%`,
+                      color: "#28A745",
+                    },
+                    {
+                      label: "campaign",
+                      icon: "fa-solid fa-bullhorn",
+                      value: counts.campaignCount,
+                      width: `${(counts.campaignCount / (counts.facebookCount + counts.referralCount + counts.campaignCount + counts.googleCount)) * 100 || 0}%`,
+                      color: "#FFC107",
+                    },
+                    {
+                      label: "Google",
+                      icon: "fa-brands fa-google",
+                      value: counts.googleCount,
+                      width: `${(counts.googleCount / (counts.facebookCount + counts.referralCount + counts.campaignCount + counts.googleCount)) * 100 || 0}%`,
+                      color: "#EA4335",
                     },
                   ].map((lead, index) => (
                     <div key={index} className="admin-lead-item mb-3 d-flex align-items-center">

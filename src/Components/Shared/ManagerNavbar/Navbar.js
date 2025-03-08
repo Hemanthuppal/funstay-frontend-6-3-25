@@ -1,6 +1,6 @@
-import React, { useState, useContext ,useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaUsers, FaCalendarCheck, FaUmbrellaBeach, FaWalking, FaFileInvoiceDollar, FaTachometerAlt, FaBell, FaEnvelope, FaCaretDown, FaRegAddressBook, FaCalendarAlt, FaBullhorn, FaUsersCog, FaHome, FaClipboardList, FaChartLine, FaUserFriends, FaPeopleCarry } from "react-icons/fa";
+import { FaUsers, FaCalendarCheck, FaUserCheck, FaWalking, FaBriefcase, FaTachometerAlt, FaBell, FaEnvelope, FaCaretDown, FaRegAddressBook, FaCalendarAlt, FaBullhorn, FaUsersCog, FaHome, FaClipboardList, FaChartLine, FaUserFriends, FaPeopleCarry } from "react-icons/fa";
 import { IoHomeOutline, IoMenu } from "react-icons/io5";
 import "./Navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,7 +8,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from "../../AuthContext/AuthContext";
 import { baseURL } from "../../Apiservices/Api";
-import {ThemeContext} from "../Themes/ThemeContext";
+import { ThemeContext } from "../Themes/ThemeContext";
 
 const Manager = ({ onToggleSidebar }) => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const Manager = ({ onToggleSidebar }) => {
   const [notifications, setNotifications] = useState([]);
   const [showNotificationDropdown, setShowNotificationDropdown] = useState(false);
   const navigate = useNavigate();
-  const { logout, userName, userId,authToken } = useContext(AuthContext);
+  const { logout, userName, userId, authToken } = useContext(AuthContext);
 
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
@@ -86,7 +86,7 @@ const Manager = ({ onToggleSidebar }) => {
     await markNotificationAsRead(notification.id);
     setNotifications((prev) => prev.filter((n) => n.id !== notification.id));
     setShowNotificationDropdown(false);
-  
+
     // Navigate based on whether the notification has a leadid
     if (notification.leadid) {
       navigate(`/m-opportunity-comments/${notification.leadid}`);
@@ -94,8 +94,8 @@ const Manager = ({ onToggleSidebar }) => {
       navigate('/m-view-leads');
     }
 
-     // Use a timeout to ensure navigation happens before the reload
-     setTimeout(() => {
+    // Use a timeout to ensure navigation happens before the reload
+    setTimeout(() => {
       window.location.reload();
     }, 0);
   };
@@ -121,7 +121,7 @@ const Manager = ({ onToggleSidebar }) => {
   return (
     <>
       <div className="manager-container">
-        <div className="manager-header"style={{ "--theme-color": themeColor }}>
+        <div className="manager-header" style={{ "--theme-color": themeColor }}>
           <div className="manager-header-left">
             <div
               className={`manager-sidebar-toggle ${collapsed ? 'collapsed' : ''}`}
@@ -141,37 +141,37 @@ const Manager = ({ onToggleSidebar }) => {
               <div className="manager-nav-icon-container" onClick={toggleNotificationDropdown}>
                 <FaBell className="manager-nav-icon" />
                 {notifications.length > 0 && <span className="manager-nav-badge">{notifications.length}</span>}
-            {showNotificationDropdown && (
-              <div className="notification-dropdown">
-                <div className="notification-dropdown-header">Notifications</div>
-                <div className="notification-dropdown-body">
-                  {notifications.length === 0 ? (
-                    <div className="notification-item">No new notifications</div>
-                  ) : (
-                    notifications.map((notification) => (
-                      <div
-                        key={notification.id}
-                        className="notification-item"
-                        onClick={() => handleNotificationClick(notification)}
-                        style={{ padding: "8px", cursor: "pointer" }}
-                      >
-                        {/* <div style={{ fontWeight: notification.read ? "normal" : "bold" }}>
+                {showNotificationDropdown && (
+                  <div className="notification-dropdown">
+                    <div className="notification-dropdown-header">Notifications</div>
+                    <div className="notification-dropdown-body">
+                      {notifications.length === 0 ? (
+                        <div className="notification-item">No new notifications</div>
+                      ) : (
+                        notifications.map((notification) => (
+                          <div
+                            key={notification.id}
+                            className="notification-item"
+                            onClick={() => handleNotificationClick(notification)}
+                            style={{ padding: "8px", cursor: "pointer" }}
+                          >
+                            {/* <div style={{ fontWeight: notification.read ? "normal" : "bold" }}>
                           {notification.message}
                         </div> */}
-                        <div style={{ fontWeight: notification.read ? "normal" : "bold" }}>
-  {notification.message.length > 40 
-    ? `${notification.message.slice(0, 40)}...` 
-    : notification.message}
-</div>
-                        <div style={{ fontSize: "0.8em", color: "#888" }}>
-                          {new Date(notification.createdAt).toLocaleString()}
-                        </div>
-                      </div>
-                    ))
-                  )}
-                </div>
-              </div>
-            )}
+                            <div style={{ fontWeight: notification.read ? "normal" : "bold" }}>
+                              {notification.message.length > 40
+                                ? `${notification.message.slice(0, 40)}...`
+                                : notification.message}
+                            </div>
+                            <div style={{ fontSize: "0.8em", color: "#888" }}>
+                              {new Date(notification.createdAt).toLocaleString()}
+                            </div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
               {/* <div className="manager-nav-icon-container">
                 <FaEnvelope className="manager-nav-icon" />
@@ -180,19 +180,19 @@ const Manager = ({ onToggleSidebar }) => {
 
               <div className="manager-nav-icon-container" onClick={handleProfileClick}>
                 <div className="manager-nav-profile">
-                {formData.imageUrl ? (
-        <img
-          src={`${baseURL}${formData.imageUrl}`}
-          alt="Profile"
-          className="manager-nav-profile-img"
-        />
-      ) : (
-        <img
-          src="https://i.pravatar.cc/100?img=4" // Fallback image
-          alt="Default Profile"
-          className="manager-nav-profile-img"
-        />
-      )}
+                  {formData.imageUrl ? (
+                    <img
+                      src={`${baseURL}${formData.imageUrl}`}
+                      alt="Profile"
+                      className="manager-nav-profile-img"
+                    />
+                  ) : (
+                    <img
+                      src="https://i.pravatar.cc/100?img=4" // Fallback image
+                      alt="Default Profile"
+                      className="manager-nav-profile-img"
+                    />
+                  )}
                   {/* <img
                     src="https://i.pravatar.cc/40?img=4"
                     alt="Profile"
@@ -207,11 +207,11 @@ const Manager = ({ onToggleSidebar }) => {
 
                     </div>
                     <div
-      className="manager-nav-profile-item"
-      onClick={() => navigate("/m-profile")}
-    >
-      Your Profile
-    </div>
+                      className="manager-nav-profile-item"
+                      onClick={() => navigate("/m-profile")}
+                    >
+                      Your Profile
+                    </div>
                     {/* <div className="manager-nav-profile-item">Your Profile</div> */}
                     {/* <div className="manager-nav-profile-item">Settings</div>
                     <div className="manager-nav-profile-item">Help Center</div> */}
@@ -235,9 +235,9 @@ const Manager = ({ onToggleSidebar }) => {
                   {!collapsed && <span className="link_text">Dashboard</span>}
                 </Link>
               </li>
-              <li className={`manager-nav-item ${location.pathname.startsWith("/m-allleads")||
-              location.pathname.startsWith("/m-viewallleads")
-               ? "active"
+              <li className={`manager-nav-item ${location.pathname.startsWith("/m-allleads") ||
+                location.pathname.startsWith("/m-viewallleads")
+                ? "active"
                 : ""
                 }`}>
                 <Link className="nav-link" to="/m-allleads" onClick={handleNavItemClick}>
@@ -245,8 +245,6 @@ const Manager = ({ onToggleSidebar }) => {
                   {!collapsed && <span className="link_text">All Leads</span>}
                 </Link>
               </li>
-
-             
 
               <li
                 className={`manager-nav-item ${location.pathname.startsWith("/m-view-leads") ||
@@ -260,6 +258,23 @@ const Manager = ({ onToggleSidebar }) => {
                   }`}
               >
                 <Link className="nav-link" to="/m-view-leads" onClick={handleNavItemClick}>
+                  <FaUserCheck className="manager-nav-icon" />
+                  {!collapsed && <span className="link_text">My Team Leads</span>}
+                </Link>
+              </li>
+
+              <li
+                className={`manager-nav-item ${location.pathname.startsWith("/m-myview-leads") ||
+                  location.pathname.startsWith("/m-myedit-lead") ||
+                  location.pathname.startsWith("/m-myadd-leads") ||
+                  location.pathname.startsWith("/m-mycomments") ||
+                  location.pathname.startsWith("/m-myview-lead") ||
+                  location.pathname.startsWith("/m-mycreate-customer-opportunity")
+                  ? "active"
+                  : ""
+                  }`}
+              >
+                <Link className="nav-link" to="/m-myview-leads" onClick={handleNavItemClick}>
                   <FaClipboardList className="manager-nav-icon" />
                   {!collapsed && <span className="link_text">My Leads</span>}
                 </Link>
@@ -276,22 +291,36 @@ const Manager = ({ onToggleSidebar }) => {
               >
                 <Link className="nav-link" to="/m-potential-leads" onClick={handleNavItemClick}>
                   <FaChartLine className="manager-nav-icon" />
-                  {!collapsed && <span className="link_text">My Teams Opportunities</span>}
+                  {!collapsed && <span className="link_text">My Team's Opportunities</span>}
                 </Link>
               </li>
 
               <li
-  className={`manager-nav-item ${
-    ["/m-customers", "/m-customer-details", "/m-customerdetails", "/m-editcustomerdetails"].some(path => location.pathname.includes(path))
-      ? "active"
-      : ""
-  }`}
->
-  <Link className="nav-link" to="/m-customers" onClick={handleNavItemClick}>
-    <FaUserFriends className="manager-nav-icon" />
-    {!collapsed && <span className="link_text">My Teams customer</span>}
-  </Link>
-</li>
+                className={`manager-nav-item ${location.pathname.startsWith("/m-myOpp") ||
+                  location.pathname.startsWith("/m-myedit-opportunity") ||
+                  location.pathname.startsWith("/m-myopportunity-comments") ||
+                  location.pathname.startsWith("/m-mydetails")
+                  ? "active"
+                  : ""
+                  }`}
+              >
+                <Link className="nav-link" to="/m-myOpp" onClick={handleNavItemClick}>
+                  <FaBriefcase className="manager-nav-icon" />
+                  {!collapsed && <span className="link_text">My Opportunities</span>}
+                </Link>
+              </li>
+
+              <li
+                className={`manager-nav-item ${["/m-customers", "/m-customer-details", "/m-customerdetails", "/m-editcustomerdetails"].some(path => location.pathname.includes(path))
+                  ? "active"
+                  : ""
+                  }`}
+              >
+                <Link className="nav-link" to="/m-customers" onClick={handleNavItemClick}>
+                  <FaUserFriends className="manager-nav-icon" />
+                  {!collapsed && <span className="link_text">My Teams customer</span>}
+                </Link>
+              </li>
 
 
               <li

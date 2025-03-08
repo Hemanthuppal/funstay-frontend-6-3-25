@@ -1,7 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
+import { baseURL } from "../../Apiservices/Api";
+
+
 
 export const ThemeContext = createContext();
-import { baseURL } from "../../Apiservices/Api";
+
 
 export const ThemeProvider = ({ children }) => {
   const [themeColor, setThemeColor] = useState(null); // Start with null instead of default color
